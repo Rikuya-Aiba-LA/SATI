@@ -9,11 +9,11 @@ class Lending extends Model
 {
     use HasFactory;
 
-    public function books(){
-        return $this->hasmany(Book::class);
+    public function book(){
+        return $this->belongsTo(Book::class);
     }
 
-    public function customers(){
-        return $this->hasmany(Customer::class);
+    public function customer(){
+        return $this->belongsTo(Customer::class);
     }
 }
