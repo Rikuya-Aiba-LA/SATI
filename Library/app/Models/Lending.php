@@ -14,6 +14,6 @@ class Lending extends Model
     }
 
     public function customers(){
-        return $this->hasmany(Book::class);
+        return $this->hasmany(Customer::class);
     }
 }
