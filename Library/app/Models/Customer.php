@@ -8,7 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Customer extends Model
 {
     use HasFactory;
+    protected $fillable =[
+        'id',
+        'name',
+        'address',
+        'tel',
+        'email',
+        'birth',
+        'record_date'
+    ];
     public function lendings(){
-        return $this->belongsTo(Lending::class);
+        return $this->hasMany(Lending::class);
     }
 }
