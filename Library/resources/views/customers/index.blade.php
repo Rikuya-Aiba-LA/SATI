@@ -13,7 +13,7 @@
     <input type="email" name="email" value="{{ request('email') }}" placeholder="Email">
     <input type="submit" value="検索する">
   </form>
-@if($lendings->count() == 0)
+@if($customers->count() == 0)
 <p>該当するIDが存在しません</p>
  @else
 <table border="1">
