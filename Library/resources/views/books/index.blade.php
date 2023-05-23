@@ -12,23 +12,31 @@
     <input type="submit" value="検索する">
   </form>
   <hr>
-  <table border="1">
-    <thead>
-      <tr>
-        <th>資料ID</th>
-        <th>資料名</th>
-        <th>著者</th>
-        <th>出版日</th>
-      </tr>
-    </thead>
-    @foreach($books as $book)
-      <tr>
-        <td>{{ $book->id }}</td>
-        <td><a href="#">{{ $book->title }}</a></td>
-        <td>{{ $book->author }}</td>
-        <td>{{ $book->publisher }}</td>
-      </tr>
-    @endforeach
-  </table>
+  @if($books->count() == 0)
+    <p>該当するIDが存在しません</p>
+  @else
+    <table border="1">
+      <thead>
+        <tr>
+          <th>資料ID</th>
+          <th>資料名</th>
+          <th>著者</th>
+          <th>出版日</th>
+        </tr>
+      </thead>
+      @foreach($books as $book)
+        <tr>
+          <td>{{ $book->id }}</td>
+          <td><a href="#">{{ $book->title }}</a></td>
+          <td>{{ $book->author }}</td>
+          <td>{{ $book->publisher }}</td>
+        </tr>
+      @endforeach
+    </table>
+  @endif
+  <form action="{{ route('books.index') }}" method="get">
+    <input type="hidden" name="id" value = ''>
+    <input type="submit" value="一覧で表示する">
+  </form>
 </body>
 </html>
