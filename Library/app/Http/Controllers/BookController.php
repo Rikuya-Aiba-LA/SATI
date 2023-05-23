@@ -44,7 +44,18 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'isbn'=>'required|size:13',
+            'title'=>'required|max:255',
+            'classify_id'=>'max:9',
+            'publisher'=>'max:255',
+            'publish_date'
+        ]);
+        $book = new Book(
+           $request->all()
+        );
+       $book->save();
+        return redirect(route('books.index'));
     }
 
     /**

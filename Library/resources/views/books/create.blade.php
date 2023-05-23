@@ -30,13 +30,17 @@
 
             </select>
         </dd>
+        <dt>著者</dt>
+        <dd>
+            <input type="text" name="author" value="{{ old('author', $book->author) }}">
+        </dd>
         <dt>出版社</dt>
         <dd>
-            <input type="text" name="publisher" id="{{ old('publisher', $book->publisher) }}">
+            <input type="text" name="publisher" value="{{ old('publisher', $book->publisher) }}">
         </dd>
         <dt>出版日</dt>
         <dd>
-            <input type="date" name="publish_date" id="{{ old('publish_date', $book->publish_date) }}">
+            <input type="date" name="publish_date" value="{{ old('publish_date', $book->publish_date) }}">
         </dd>
     </dl>
     <button type="submit">登録</button>
