@@ -13,20 +13,24 @@
     <input type="email" name="email" value="{{ request('email') }}" placeholder="Email">
     <input type="submit" value="検索する">
   </form>
+@if($lendings->count() == 0)
+<p>該当するIDが存在しません</p>
+ @else
 <table border="1">
     <tr>
         <th>ID</th>
         <th>名前</th>
         <th>Email</th>
     </tr>
-        @foreach($customers as $customer)
-            <tr>
-                <td>{{ $customer->id }}</td>
-                <td><a href="#">{{ $customer->name }}</a></td>
-                <td>{{ $customer->email }}</td>
-            </tr>
-        @endforeach
+    @foreach($customers as $customer)
+    <tr>
+        <td>{{ $customer->id }}</td>
+        <td><a href="#">{{ $customer->name }}</a></td>
+        <td>{{ $customer->email }}</td>
+    </tr>
+    @endforeach
         
 </table>
+@endif
 </body>
 </html>
