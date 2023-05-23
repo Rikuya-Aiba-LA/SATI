@@ -4,6 +4,9 @@
     <meta charset="utf8">
     <title>{{ config('app.name')}}</title>
 </head>
+<header>
+@include('commons/nav')
+</header>
 <body>
 <h1>会員管理画面</h1>
 <form action="#" method="post">

@@ -4,6 +4,9 @@
   <meta charset="utf8">
   <title>図書管理システム</title>
 </head>
+<header>
+@include('commons/nav')
+</header>
 <body>
   <h1>資料管理</h1>
   <button onclick="location.href='#'">新規登録</button>
