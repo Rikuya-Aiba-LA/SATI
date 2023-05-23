@@ -7,9 +7,9 @@
 <body>
   <h1>資料管理</h1>
   <button onclick="location.href='#'">新規登録</button>
-  <form action="#" method="post">
-    <input type="text" name="keyword" value="検索情報保持するとこ" placeholder="資料ID">
-    <input type="button" value="検索する">
+  <form action="{{ route('books.index') }}" method="get">
+    <input type="number" name="id" value="{{ request('id') }}" placeholder="資料ID">
+    <input type="submit" value="検索する">
   </form>
   <hr>
   <table border="1">
@@ -24,7 +24,7 @@
     @foreach($books as $book)
       <tr>
         <td>{{ $book->id }}</td>
-        <td>{{ $book->title }}</td>
+        <td><a href="#">{{ $book->title }}</a></td>
         <td>{{ $book->author }}</td>
         <td>{{ $book->publisher }}</td>
       </tr>
