@@ -17,16 +17,18 @@
       <tr>
         <th>資料ID</th>
         <th>資料名</th>
+        <th>著者</th>
         <th>出版日</th>
       </tr>
     </thead>
-    <!--foreach()-->
+    @foreach($books as $book)
       <tr>
-        <td>ID</td>
-        <td>資料</td>
-        <td>出版</td>
+        <td>{{ $book->id }}</td>
+        <td>{{ $book->title }}</td>
+        <td>{{ $book->author }}</td>
+        <td>{{ $book->publisher }}</td>
       </tr>
-    <!--endforeach-->
+    @endforeach
   </table>
 </body>
 </html>
