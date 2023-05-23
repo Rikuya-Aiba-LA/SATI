@@ -4,7 +4,7 @@
         <a href="{{ route('home') }}">メニュー画面</a>
     </li>
     <li>
-        <a href="{{ route('books.index') }}">書籍一覧</a>
+        <a href="{{ route('books.index') }}">資料一覧</a>
     </li>
     <li>
         <a href="{{ route('customers.index') }}">会員一覧</a>
