@@ -35,9 +35,9 @@
         @foreach($lendings as $lending)
         <tr>
             <td>{{ $lending->cust_id }}</td>
-            <td>{{ $lending->customer->name }}</td>
+            <td><a href="#">{{ $lending->customer->name }}</a></td>
             <td>{{ $lending->book_id }}</td>
-            <td>{{ $lending->book->title }}</td>
+            <td><a href="#">{{ $lending->book->title }}</a></td>
             <td>{{ $lending->lend_date }}</td>
             <td>{{ $lending->expectied_date }}</td>
             <td>{{ $lending->return_date }}</td>
