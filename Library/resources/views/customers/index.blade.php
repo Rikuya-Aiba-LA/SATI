@@ -9,7 +9,7 @@
 <form action="#" method="post">
     <button type="submit" value="#">新規会員登録</button>
 </form>
-<form action="#" method="post">
+<form action="" method="post">
     <input type="text" name="keyword" value="検索情報保持するとこ" placeholder="Email">
     <input type="button" value="検索する">
   </form>
@@ -19,13 +19,13 @@
         <th>名前</th>
         <th>Email</th>
     </tr>
-        <!-- foreach($customers as $customer) -->
+        @foreach($customers as $customer)
             <tr>
-                <td>id</td>
-                <td>氏名</td>
-                <td>email</td>
+                <td>{{ $customer->id }}</td>
+                <td><a href="3">{{ $customer->name }}</a></td>
+                <td>{{ $customer->email }}</td>
             </tr>
-        <!-- endforeach -->
+        @endforeach
         
 </table>
 </body>
