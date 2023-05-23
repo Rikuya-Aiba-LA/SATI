@@ -9,10 +9,12 @@
 <body>
     <h1>貸出台帳</h1>
 <form action="{{ route('lendings.index') }}" method="get">
-    <input type="number" name="cust_id"  placeholder="会員番号ID">
+    <input type="number" name="cust_id"  placeholder="会員番号ID" value="{{ request('cust_id') }}" >
     <input type="submit" value="検索する">
   </form>
- 
+ @if($lendings->count() == 0)
+<p>該当するIDが存在しません</p>
+ @else
     <table>
     <thead>
         <tr>
@@ -42,5 +44,10 @@
         @endforeach
     </tbody>
     </table>
+    @endif
+    <form action="{{ route('lendings.index') }}" method="get">
+    <input type="hidden" name="cust_id" value = '0'>
+    <input type="submit" value="一覧で表示する">
+  </form>
 </body>
 </html>
