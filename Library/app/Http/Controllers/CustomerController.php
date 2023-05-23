@@ -12,9 +12,15 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $customers = Customer::orderBy('created_at','desc')->paginate(20);
+        if ($request->email) {
+            
+            $customers = Customer::where('email',$request->email)->orderBy('id','desc')->paginate(20);
+
+        }else {
+          $customers = Customer::orderBy('id','desc')->paginate(20); 
+        }
         return view('customers.index',['customers'=>$customers]);
     }
 
