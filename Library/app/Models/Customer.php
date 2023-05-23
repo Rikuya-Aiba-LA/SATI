@@ -18,6 +18,6 @@ class Customer extends Model
         'record_date'
     ];
     public function lendings(){
-        return $this->hasMany(Lending::class);
+        return $this->hasMany(Lending::class ,'cust_id');
     }
 }
