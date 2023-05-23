@@ -32,8 +32,8 @@
         
 </table>
 @endif
-<form action="{{ route('lendings.index') }}" method="get">
-    <input type="hidden" name="cust_id" value = '0'>
+<form action="{{ route('customers.index') }}" method="get">
+    <input type="hidden" name="email" value = ''>
     <input type="submit" value="一覧で表示する">
 </form>
 </body>
