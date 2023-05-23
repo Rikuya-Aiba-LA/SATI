@@ -10,11 +10,12 @@ class BookController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $books = Book::orderBy('created_at', 'desc')->paginate(20);
+        return view('books/index', ['books' => $books]);
     }
 
     /**
