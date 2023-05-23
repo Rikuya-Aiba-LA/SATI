@@ -7,6 +7,7 @@
 </head>
 <body>
     <header>
+        @include('commons/nav')
         <div class="container">
             <a class="brand" href="/">{{ config('app.name') }}</a>
         </div>
