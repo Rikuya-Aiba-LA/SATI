@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\LendingController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\Route;
 
 /*
