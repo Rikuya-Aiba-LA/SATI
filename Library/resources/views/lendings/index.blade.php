@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<header>
-@include('commons/nav')
-</header>
+@extends('layouts/app')
+
+@section('content')
 <body>
     <h1>貸出台帳</h1>
 <form action="{{ route('lendings.index') }}" method="get">
@@ -52,5 +44,4 @@
     <input type="hidden" name="cust_id" value = '0'>
     <input type="submit" value="一覧で表示する">
   </form>
-</body>
-</html>
+@endsection

@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="ja">
-    <head>
-    <meta charset="utf8">
-    <title>{{ config('app.name')}}</title>
-</head>
-<header>
-@include('commons/nav')
-</header>
-<body>
+@extends('layouts/app')
+
+@section('content')
 <h1>会員管理画面</h1>
 <form action="#" method="post">
     <button type="submit" value="#">新規会員登録</button>
@@ -39,5 +32,4 @@
     <input type="hidden" name="email" value = ''>
     <input type="submit" value="一覧で表示する">
 </form>
-</body>
-</html>
+@endsection

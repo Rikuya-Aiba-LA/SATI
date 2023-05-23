@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-  <meta charset="utf8">
-  <title>図書管理システム</title>
-</head>
-<header>
-@include('commons/nav')
-</header>
-<body>
+@extends('layouts/app')
+
+@section('content')
   <h1>資料管理</h1>
   <button onclick="location.href='#'">新規登録</button>
   <form action="{{ route('books.index') }}" method="get">
@@ -41,5 +34,4 @@
     <input type="hidden" name="id" value = ''>
     <input type="submit" value="一覧で表示する">
   </form>
-</body>
-</html>
+@endsection
