@@ -5,7 +5,9 @@
   <form action="{{ route('books.index') }}" method="get">
     <button>一覧へ</button>
   </form>
-  <button>編集</button>
+  <form action="{{ route('books.edit', $book) }}" method="get">
+    <button>編集</button>
+  </form>
   <button>削除</button>
   <dl>
     <dt>ISBN: </dt>

@@ -61,11 +61,11 @@ class BookController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Book  $book
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function edit(Book $book)
     {
-        //
+        return view('books/edit', ['book' => $book]);
     }
 
     /**
