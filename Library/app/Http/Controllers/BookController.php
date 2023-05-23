@@ -14,8 +14,15 @@ class BookController extends Controller
      */
     public function index(Request $request)
     {
-        $books = Book::orderBy('created_at', 'desc')->paginate(20);
-        return view('books/index', ['books' => $books]);
+        if ($request->id) {
+            
+            $books = Book::where('id',$request->id)->orderBy('created_at','desc')->paginate(20);
+
+        }else {
+          $books = Book::orderBy('created_at','desc')->paginate(20); 
+        }
+        
+        return view('books/index',['books' => $books]);
     }
 
     /**
