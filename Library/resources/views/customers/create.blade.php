@@ -23,7 +23,7 @@
     </dd>
     <dt>生年月日</dt>
     <dd>
-        <input type="text" name="birth" value="{{ old('birth', $customer->birth) }}">
+        <input type="date" name="birth" value="{{ old('birth', $customer->birth) }}">
     </dd>
 </dl>
 <button type="submit">登録確認</button>
