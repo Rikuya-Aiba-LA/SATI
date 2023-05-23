@@ -8,15 +8,15 @@
     <dl>
         <dt>ISBN</dt>
         <dd>
-            <input type="text" name="isbn" id="{{ old('isbn', $book->isbn) }}">
+            <input type="text" name="isbn" value="{{ old('isbn', $book->isbn) }}">
         </dd>
         <dt>資料名</dt>
         <dd>
-            <input type="text" name="title" id="{{ old('title', $book->title) }}">
+            <input type="text" name="title" value="{{ old('title', $book->title) }}">
         </dd>
         <dt>分類コード </dt>
         <dd>
-            <select name="classify_id" id="{{ old('classify_id, $book->classify_id') }}">
+            <select name="classify_id">
                 <option value="0">総記</option>
                 <option value="1">哲学</option>
                 <option value="2">歴史</option>
