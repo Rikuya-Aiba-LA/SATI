@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<header>
+@include('commons/nav')
+</header>
 <body>
     <h1>貸出台帳</h1>
 <form action="{{ route('lendings.index') }}" method="get">
