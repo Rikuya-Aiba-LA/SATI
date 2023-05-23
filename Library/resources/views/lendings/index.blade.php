@@ -8,9 +8,9 @@
 </head>
 <body>
     <h1>貸出台帳</h1>
-<form action="#" method="post">
-    <input type="text" name="keyword" value="検索情報保持するとこ" placeholder="資料ID">
-    <input type="button" value="検索する">
+<form action="{{ route('lendings.index') }}" method="get">
+    <input type="number" name="cust_id"  placeholder="会員番号ID">
+    <input type="submit" value="検索する">
   </form>
  
     <table>
