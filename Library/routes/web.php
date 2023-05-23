@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LendingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::resource('customers', CustomerController::class);
+Route::resource('books', BookController::class);
+Route::get('/lendings/index', [LendingController::class, 'index'])->name('lendings.index');
+Route::post('/lendings/store',[LendingController::class, 'store'])->name('lendings.store');
+Route::get('/lendings/update', [LendingController::class, 'update'])->name('lendings.update');
