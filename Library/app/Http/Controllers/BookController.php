@@ -73,11 +73,19 @@ class BookController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Book  $book
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(Request $request, Book $book)
     {
-        //
+        $this->validate($request,[
+            'isbn'=>'required|size:13',
+            'title'=>'required|max:255',
+            'classify_id'=>'max:9',
+            'publisher'=>'max:255',
+            'publish_date'
+        ]);
+        $book->update($request->all());
+        return redirect(route('books.show', $book));
     }
 
     /**

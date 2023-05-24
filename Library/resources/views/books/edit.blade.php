@@ -2,7 +2,7 @@
 
 @section('content')
   <h1>資料情報更新</h1>
-  <form action="#" method="post">
+  <form action="{{ route('books.update', $book->id) }}" method="post">
     @method('patch')
     @csrf
     <dl>
@@ -40,7 +40,10 @@
       </dd>
       <dt>出版日</dt>
       <dd>
-          <input type="date" name="publish_date" value="{{ old('publish_date', $book->publish_date) }}">
+      <?php
+        preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$book->publish_date, $date_match);
+      ?>
+          <input type="text" name="publish_date" value="{{ old('publish_date', $date_match[0]) }}">
       </dd>
     </dl>
     <button type="submit">更新</button>
