@@ -7,6 +7,10 @@
     <input type="number" name="id" value="{{ request('id') }}" placeholder="資料ID">
     <input type="submit" value="検索する">
   </form>
+  <form action="{{ route('books.index') }}" method="get">
+    <input type="hidden" name="trash_date" value="日本語">
+    <input type="submit" value="廃棄済み資料">
+  </form>
   <hr>
   @if($books->count() == 0)
     <p>該当するIDが存在しません</p>
@@ -18,6 +22,7 @@
           <th>資料名</th>
           <th>著者</th>
           <th>出版日</th>
+          <th>廃棄年月日</th>
         </tr>
       </thead>
       @foreach($books as $book)
@@ -26,9 +31,17 @@
           <td><a href="{{ route('books.show', $book->id) }}">{{ $book->title }}</a></td>
           <td>{{ $book->author }}</td>
           <?php
-            preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$book->publish_date, $date_match);
+            preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$book->publish_date, $publish_date_match);
           ?>
-          <td>{{ $date_match[0] }}</td>
+          <td>{{ $publish_date_match[0] }}</td>
+          @if($book->trash_date)
+            <?php
+              preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$book->trash_date, $trash_date_match);
+            ?>
+            <td>{{ $trash_date_match[0] }}</td>
+          @else
+            <td></td>
+          @endif
         </tr>
       @endforeach
     </table>

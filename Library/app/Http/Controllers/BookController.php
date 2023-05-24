@@ -18,8 +18,14 @@ class BookController extends Controller
             
             $books = Book::where('id',$request->id)->orderBy('created_at','desc')->paginate(20);
 
+        }else if ($request->trash_date){
+            
+            $books = Book::whereNotNull('trash_date')->orderBy('created_at','desc')->paginate(20);
+
         }else {
-          $books = Book::orderBy('id','desc')->paginate(20); 
+
+            $books = Book::whereNull('trash_date')->orderBy('created_at','desc')->paginate(20);
+
         }
         
         return view('books/index',['books' => $books]);
