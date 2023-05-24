@@ -26,7 +26,7 @@
             <?php
                 preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$customer->birth, $birth_date_match);
             ?>
-            <input type="text" name="birth" value="{{ old('birth', $birth_date_match[0]) }}">
+            <input type="date" name="birth" value="{{ old('birth', $birth_date_match[0]) }}">
         @else
             <input type="date" name="birth" value="{{ old('birth', $customer->birth) }}">
         @endif
