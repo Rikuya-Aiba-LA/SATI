@@ -64,7 +64,7 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function show(Customer $customer, Request $request)
+    public function show(Request $request,Customer $customer)
     {
         
         return view('customers/show', ['customer'=>$customer]);
@@ -111,8 +111,14 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Customer $customer)
+    public function unsub(Request $request,Customer $customer)
     {
-        //
+        $this->validate($request, [
+            'unsub_date'
+
+        ]);
+    
+        $customer->update($request->all());
+        return redirect(route('customers.show',$customer));
     }
 }

@@ -15,6 +15,7 @@ class Customer extends Model
         'tel',
         'email',
         'birth',
+        'unsub_date',
         'record_date'
     ];
     public function lendings(){

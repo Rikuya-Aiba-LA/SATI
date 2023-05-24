@@ -9,8 +9,13 @@
 <form action="{{route('customers.edit', $customer->id) }}">
     <button type="submit">情報変更</button>
 </form>
-<form action="#" id=delete-form>
-    <button>退会</button>
+<form action="{{ route('customers.unsub',$customer->id) }}" method= "post">
+                
+                @csrf
+                <input type="hidden" name="unsub_date" value="<?php echo date('Y-m-j');?>">
+                <input type="submit" value="退会">
+            </form>
+    
 </form>
 <!-- 削除ボタンが押されたら退会日が入力される処理。確認のポップアップも表示 -->
 <!-- <script type="text/javascript">

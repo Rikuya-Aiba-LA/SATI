@@ -28,4 +28,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/lendings/index', [LendingController::class, 'index'])->name('lendings.index');
     Route::post('/lendings/store',[LendingController::class, 'store'])->name('lendings.store');
     Route::get('/lendings/update', [LendingController::class, 'update'])->name('lendings.update');
+    Route::post('/customers/unsub/{customer}',[CustomerController::class, 'unsub'])->name('customers.unsub');
+
 });
