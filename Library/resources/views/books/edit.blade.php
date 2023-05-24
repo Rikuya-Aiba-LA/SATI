@@ -41,9 +41,9 @@
       <dt>出版日</dt>
       <dd>
       <?php
-        preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$book->publish_date, $date_match);
+        preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$book->publish_date, $publish_date_match);
       ?>
-          <input type="text" name="publish_date" value="{{ old('publish_date', $date_match[0]) }}">
+          <input type="text" name="publish_date" value="{{ old('publish_date', $publish_date_match[0]) }}">
       </dd>
     </dl>
     <button type="submit">更新</button>

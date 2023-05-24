@@ -30,9 +30,22 @@
             <td><a href="#">{{ $lending->customer->name }}</a></td>
             <td>{{ $lending->book_id }}</td>
             <td><a href="#">{{ $lending->book->title }}</a></td>
-            <td>{{ $lending->lend_date }}</td>
-            <td>{{ $lending->expectied_date }}</td>
-            <td>{{ $lending->return_date }}</td>
+            <?php
+                preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$lending->lend_date, $lend_date_match);
+            ?>
+            <td>{{ $lend_date_match[0] }}</td>
+            <?php
+                preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$lending->expectied_date, $expected_date_match);
+            ?>
+            <td>{{ $expected_date_match[0] }}</td>
+            @if($lending->return)
+                <?php
+                    preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$lending->return, $return_date_match);
+                ?>
+                <td>{{ $return_date_match[0] }}</td>
+            @else
+                <td>{{ $lending->return_date }}</td>
+            @endif
             
 
         </tr>

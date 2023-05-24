@@ -25,7 +25,10 @@
           <td>{{ $book->id }}</td>
           <td><a href="{{ route('books.show', $book->id) }}">{{ $book->title }}</a></td>
           <td>{{ $book->author }}</td>
-          <td>{{ $book->publish_date }}</td>
+          <?php
+            preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$book->publish_date, $date_match);
+          ?>
+          <td>{{ $date_match[0] }}</td>
         </tr>
       @endforeach
     </table>

@@ -14,7 +14,7 @@ class LendingController extends Controller
             $lendings = Lending::where('cust_id',$request->cust_id)->orderBy('created_at','desc')->paginate(20);
 
         }else {
-          $lendings = Lending::orderBy('created_at','desc')->paginate(20); 
+          $lendings = Lending::orderBy('id','desc')->paginate(20); 
         }
         
         return view('lendings/index',['lendings'=>$lendings]);
