@@ -74,7 +74,8 @@
     
     <tr>
         <td>{{ $data->book->id }}</td>
-        <td>{{ $data->book->title }}</td>
+
+        <td><a href="{{route('books.show', $data->book->id)}}">{{ $data->book->title }}</a></td>
         <?php
             preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$data->lend_date, $lend_date_match);
         ?>
@@ -88,7 +89,6 @@
         @else
             <td>{{ $data->book->expected_date }}</td>
         @endif
-        
         
         @if($data->return_date == null)
             <td><form action="#">
