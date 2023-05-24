@@ -40,7 +40,14 @@
         </dd>
         <dt>出版日</dt>
         <dd>
-            <input type="date" name="publish_date" value="{{ old('publish_date', $book->publish_date) }}">
+            @if($book->publish_date)
+                <?php
+                    preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$book->publish_date, $publish_date_match);
+                ?>
+                <input type="text" name="publish_date" value="{{ old('publish_date', $publish_date_match[0]) }}">
+            @else
+                <input type="date" name="publish_date" value="{{ old('publish_date', $book->publish_date) }}">
+            @endif
         </dd>
     </dl>
     <button onclick = "createBook()" name = "check">登録</button>
