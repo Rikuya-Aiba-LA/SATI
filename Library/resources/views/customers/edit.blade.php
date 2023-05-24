@@ -9,7 +9,7 @@
     @endforeach
 </ul>
 @endif
-<form action="{{ route('customers.update',$customer->id) }}" method="post">
+<form action="{{ route('customers.update',$customer->id) }}" method="post" name="contact_form" >
     @method('patch')
     @csrf
     <dl>
@@ -34,7 +34,27 @@
             <input type="datetime" name="birth" value="{{ old('birth', $customer->birth) }}">
         </dd>
     </dl>
-    <button type="submit">更新</button>
+    <button onclick = "createCustomer()" name = "check">更新</button>
 </form>
-<!-- 更新ボタンが押された際のポップアップの表示処理 -->
+<script>
+        //[確認]ボタンが押されたときの処理を定義
+       function createCustomer() {
+            //input要素の入力内容を取得
+            const name = contact_form.name.value;
+            const address = contact_form.address.value;
+            const tel = contact_form.tel.value;
+            const email = contact_form.email.value;
+            const birth = contact_form.birth.value;
+            event.preventDefault();
+            if (confirm('以下の入力で正しいですか？\n' + "氏名:" + name + "\n"
+                    + "住所:" + address +"\n"
+                    + "電話番号:" + tel + "\n"
+                    + "E-mail:" + email + "\n"
+                    + "生年月日:" + birth + "\n")
+        ) {
+                contact_form.submit();
+            }
+        }
+        ;
+    </script>
 @endsection
