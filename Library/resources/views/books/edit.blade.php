@@ -2,7 +2,7 @@
 
 @section('content')
   <h1>資料情報更新</h1>
-  <form action="{{ route('books.update', $book->id) }}" method="post">
+  <form action="{{ route('books.update', $book->id) }}" method="post" name = "contact_form">
     @method('patch')
     @csrf
     <dl>
@@ -46,9 +46,33 @@
           <input type="text" name="publish_date" value="{{ old('publish_date', $date_match[0]) }}">
       </dd>
     </dl>
-    <button type="submit">更新</button>
+    <button onclick = "editBook()" name = "check">更新</button>
   </form>
   <form action="{{ route('books.show', $book) }}" method="get">
     <button>キャンセル</button>
   </form>
+  <script>
+        //[確認]ボタンが押されたときの処理を定義
+       function editBook() {
+            //input要素（name属性がisbn）の入力内容を取得
+            const isbn = contact_form.isbn.value;
+            const title = contact_form.title.value;
+            const classify_id = contact_form.classify_id.value;
+            const author = contact_form.author.value;
+            const publisher = contact_form.publisher.value;
+            const publish_date = contact_form.publish_date.value;
+            event.preventDefault();
+            if (confirm('以下の入力で正しいですか？\n' + "ISBN番号" + isbn + "\n"
+                    + "資料名:" + title +"\n" 
+                    + "分類コード:" + classify_id + "\n" 
+                    + "著者:" + author + "\n"
+                    + "出版社:" + publisher + "\n"
+                    + "出版日:" + publish_date)
+        ) {
+                contact_form.submit();
+            }
+        }
+        
+        ;
+    </script>
 @endsection
