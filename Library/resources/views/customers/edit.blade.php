@@ -2,13 +2,7 @@
 
 @section('content')
 <h1>会員情報編集</h1>
-@if ($errors->count())
-<ul class = "alert">
-    @foreach($errors->all() as $error)
-    <li>{{ $error }}</li>
-    @endforeach
-</ul>
-@endif
+@include('commons.flash')
 <form action="{{ route('customers.update',$customer->id) }}" method="post" name="contact_form" >
     @method('patch')
     @csrf

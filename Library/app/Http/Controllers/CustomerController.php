@@ -96,7 +96,7 @@ class CustomerController extends Controller
             'name' => 'required|max:50',
             'address' => 'required|max:200',
             'tel' => 'required|max:20',
-            'email' => 'max:50',
+            'email' => 'required|max:50',
             'birth' => 'required'
 
         ]);
