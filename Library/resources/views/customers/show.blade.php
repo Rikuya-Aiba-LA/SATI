@@ -10,7 +10,7 @@
     <button type="submit">情報変更</button>
 </form>
 <form action="#" id=delete-form>
-    <button>削除</button>
+    <button>退会</button>
 </form>
 <!-- 削除ボタンが押されたら退会日が入力される処理。確認のポップアップも表示 -->
 <!-- <script type="text/javascript">
