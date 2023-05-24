@@ -43,7 +43,19 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name'=>'required|max:50',
+            'address'=>'required|max:200',
+            'tel'=>'required|max:20',
+            'email'=>'required|max:50|unique:customers,email',
+            'birth'=>'required',
+            'record_date'=>'required'
+        ]);
+        $customer = new Customer(
+           $request->all()
+        );
+       $customer->save();
+        return redirect(route('customers.index'));
     }
 
     /**

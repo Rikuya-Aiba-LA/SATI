@@ -1,8 +1,7 @@
 @extends('layouts.app')
-
 @section('content')
 <h1>会員登録画面</h1>
-<form action="{{ route('customers.store') }}" method="post">
+<form action="{{ route('customers.store') }}" method="post" name="contact_form" >
 @csrf
 <dl>
     <dt>氏名</dt>
@@ -25,9 +24,34 @@
     <dd>
         <input type="date" name="birth" value="{{ old('birth', $customer->birth) }}">
     </dd>
+    <dt>今日の日付</dt>
+    <dd>
+        <input type="date" name="record_date" value="{{ old('record_date', $customer->record_date) }}">
+    </dd>
 </dl>
-<button type="submit">登録確認</button>
+<button onclick = "createCustomer()" name = "check">登録確認</button>
 </form>
+<script>
+        //[確認]ボタンが押されたときの処理を定義
+       function createCustomer() {
+            //input要素の入力内容を取得
+            const name = contact_form.name.value;
+            const address = contact_form.address.value;
+            const tel = contact_form.tel.value;
+            const email = contact_form.email.value;
+            const birth = contact_form.birth.value;
+            const record_date = contact_form.record_date.value;
+            event.preventDefault();
+            if (confirm('以下の入力で正しいですか？\n' + "氏名:" + name + "\n"
+                    + "住所:" + address +"\n"
+                    + "電話番号:" + tel + "\n"
+                    + "E-mail:" + email + "\n"
+                    + "生年月日:" + birth + "\n"
+                    + "今日の日付:" + record_date)
+        ) {
+                contact_form.submit();
+            }
+        }
+        ;
+    </script>
 @endsection
-<hr>
-<a href="/">戻る</a>
