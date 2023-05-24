@@ -6,7 +6,7 @@
     <button>一覧へ</button>
   </form>
 <!-- 会員の情報を変更するために会員情報変更画面へ飛ぶ -->
-<form action="route('custoemrs.edit'ここにEcustomerはいるか)">
+<form action="{{route('customers.edit', $customer->id) }}">
     <button type="submit">情報変更</button>
 </form>
 <form action="#" id=delete-form>
