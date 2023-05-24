@@ -25,6 +25,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::resource('customers', CustomerController::class);
     Route::resource('books', BookController::class);
+    Route::patch('books/trash/{book}', [BookController::class, 'trash'])->name('books.trash');
     Route::get('/lendings/index', [LendingController::class, 'index'])->name('lendings.index');
     Route::post('/lendings/store',[LendingController::class, 'store'])->name('lendings.store');
     Route::get('/lendings/update', [LendingController::class, 'update'])->name('lendings.update');

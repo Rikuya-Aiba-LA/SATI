@@ -14,7 +14,8 @@ class Book extends Model
         'author',
         'publisher',
         'publish_date',
-        'isbn'
+        'isbn',
+        'trash_date'
     ];
 
     public function lendings(){
