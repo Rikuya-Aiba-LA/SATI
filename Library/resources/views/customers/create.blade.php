@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <h1>会員登録画面</h1>
+@include('commons.flash')
 <form action="{{ route('customers.store') }}" method="post" name="contact_form" >
 @csrf
 <dl>
