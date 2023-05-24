@@ -1,0 +1,26 @@
+ul.alert {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1rem 1rem;
+    background-repeat: no-repeat;
+    background-size: calc(100% - 6px) calc(100% - 6px), 100% 100%;
+    background-position: 3px 3px, 0;
+
+    background-image:
+        linear-gradient(-135deg, transparent 0 30px, #010101 10px),
+        linear-gradient(-135deg, transparent 0 30px, #CE3F2C 10px);
+    color: #CE3F2C;
+
+    margin-right: 1rem;
+
+    font-family: 'Noto Serif JP', serif;
+    transform: scaleY(1.5);
+    letter-spacing: -0.1rem;
+
+    margin-bottom: 0.5rem;
+    font-size: 15px;
+    font-weight: 200;
+
+}

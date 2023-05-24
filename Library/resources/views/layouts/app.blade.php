@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ config('app.name') }}</title>
-    <link rel="stylesheet" href="#">
+    <link rel="stylesheet" href="/css/flash.css">
 </head>
 <body>
     <header>
