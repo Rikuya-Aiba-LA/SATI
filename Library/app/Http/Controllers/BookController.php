@@ -28,7 +28,7 @@ class BookController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function create()
     {
@@ -40,7 +40,7 @@ class BookController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector returned
      */
     public function store(Request $request)
     {
@@ -100,14 +100,11 @@ class BookController extends Controller
         return redirect(route('books.show', $book));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Book  $book
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Book $book)
-    {
-        //
+    public function trash(Request $request ,Book $book){
+        $this->validate($request, [
+            'trash_date'
+        ]);
+        $book->update($request->all());
+        return redirect(route('books.show', $book));
     }
 }
