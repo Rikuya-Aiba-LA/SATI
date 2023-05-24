@@ -27,9 +27,9 @@
         @foreach($lendings as $lending)
         <tr>
             <td>{{ $lending->cust_id }}</td>
-            <td><a href="#">{{ $lending->customer->name }}</a></td>
+            <td><a href="{{ route('customers.show', $lending->cust_id) }}">{{ $lending->customer->name }}</a></td>
             <td>{{ $lending->book_id }}</td>
-            <td><a href="#">{{ $lending->book->title }}</a></td>
+            <td><a href="{{ route('books.show', $lending->book_id) }}"">{{ $lending->book->title }}</a></td>
             <td>{{ $lending->lend_date }}</td>
             <td>{{ $lending->expectied_date }}</td>
             <td>{{ $lending->return_date }}</td>
