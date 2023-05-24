@@ -7,6 +7,10 @@
     <input type="email" name="email" value="{{ request('email') }}" placeholder="Email">
     <input type="submit" value="検索する">
   </form>
+  <form action="{{ route('customers.index') }}" method="get">
+    <input type="hidden" name="unsub_date" value="1">
+    <input type="submit" value="退会者の表示">
+  </form>
 @if($customers->count() == 0)
 <p>該当するIDが存在しません</p>
  @else

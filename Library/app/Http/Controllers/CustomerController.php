@@ -18,8 +18,11 @@ class CustomerController extends Controller
             
             $customers = Customer::where('email',$request->email)->orderBy('id','desc')->paginate(20);
 
-        }else {
-          $customers = Customer::orderBy('id','desc')->paginate(20); 
+        }elseif($request->unsub_date) {
+          $customers = Customer::whereNotNull('unsub_date')->orderBy('id','desc')->paginate(20); 
+
+        }else{
+            $customers = Customer::whereNull('unsub_date')->orderBy('id','desc')->paginate(20); 
         }
         return view('customers.index',['customers'=>$customers]);
     }
