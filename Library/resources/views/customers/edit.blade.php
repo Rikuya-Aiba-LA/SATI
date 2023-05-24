@@ -31,7 +31,7 @@
         </dd>
         <dt>生年月日</dt>
         <dd>
-            <input type="datetime" name="birth" value="{{ old('birth', $customer->birth) }}">
+            <input type="date" name="birth" value="{{ old('birth', $customer->birth) }}">
         </dd>
     </dl>
     <button onclick = "createCustomer()" name = "check">更新</button>
