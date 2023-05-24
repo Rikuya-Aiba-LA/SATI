@@ -1,0 +1,23 @@
+.navgation {
+    display: flex;
+    margin: 0;
+    margin-left: 20%;
+    padding: 0;
+    list-style: none;
+    background-color:aqua;
+    justify-content:space-between;
+    height: 60px;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    
+}
+
+li+li{
+    border-left: 1px solid #000;
+
+}
+.navgation li {
+    padding: 0 50px;
+}
+
