@@ -29,22 +29,35 @@
 
 
 <dl>
-    <dt>会員ID：</dt>
+    <dt>会員ID: </dt>
     <dd>{{ $customer->id }}</dd>
-    <dt>氏名：</dt>
+    <dt>氏名: </dt>
     <dd>{{ $customer->name}}</dd>
-    <dt>住所</dt>
+    <dt>住所: </dt>
     <dd>{{ $customer->address}}</dd>
-    <dt>電話番号：</dt>
+    <dt>電話番号: </dt>
     <dd>{{ $customer->tel}}</dd>
-    <dt>E-mail：</dt>
+    <dt>E-mail: </dt>
     <dd>{{ $customer->email}}</dd>
-    <dt>生年月日：</dt>
-    <dd>{{ $customer->birth}}</dd>
-    <dt>入会年月日：</dt>
-    <dd>{{ $customer->record_date }}</dd>
-    <dt>退会年月日：</dt>
-    <dd>{{ $customer->unsub_date }}</dd>
+    <dt>生年月日: </dt>
+    <?php
+        preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$customer->birth, $birth_date_match);
+    ?>
+    <dd>{{ $birth_date_match[0] }}</dd>
+    <dt>入会年月日: </dt>
+    <?php
+        preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$customer->record_date, $record_date_match);
+    ?>
+    <dd>{{ $record_date_match[0] }}</dd>
+    <dt>退会年月日: </dt>
+    @if($customer->unsub_date)
+        <?php
+            preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$customer->unsub_date, $unsub_date_match);
+        ?>
+        <dd>{{ $unsub_date_match[0] }}</dd>
+    @else
+        <dd>{{ $customer->unsub_date }}</dd>
+    @endif
 </dl>
 <hr>
 <h2>貸出中資料</h2>
@@ -61,17 +74,29 @@
     
     <tr>
         <td>{{ $data->book->id }}</td>
+
         <td><a href="{{route('books.show', $data->book->id)}}">{{ $data->book->title }}</a></td>
-        <td>{{ $data->lend_date }}</td>
-        <td>{{ $data->book->expected_date }}</td>
+        <?php
+            preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$data->lend_date, $lend_date_match);
+        ?>
+        <td>{{ $lend_date_match[0] }}</td>
+        <!--返却予定日-->
+        @if($data->book->expected_date)
+            <?php
+                preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$data->book->expected_date, $expected_date_match);
+            ?>
+            <td>{{ $expected_date_match[0] }}</td>
+        @else
+            <td>{{ $data->book->expected_date }}</td>
+        @endif
         
         @if($data->return_date == null)
-        <td><form action="#">
-            <button type="submit">返却</button>
-            <!-- ボタンを押したらポップアップが表示され、はいが選択されたらreturn_dateをその日の年月日が入力される -->
-        </form></td>
+            <td><form action="#">
+                <button type="submit">返却</button>
+                <!-- ボタンを押したらポップアップが表示され、はいが選択されたらreturn_dateをその日の年月日が入力される -->
+            </form></td>
         @else
-        <td>{{ $data->return_date }}</td>
+           <td>{{ $data->return_date }}</td>
         @endif
 
     </tr>

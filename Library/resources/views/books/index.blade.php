@@ -2,7 +2,7 @@
 
 @section('content')
   <h1>資料管理</h1>
-  <button onclick="location.href='#'">新規登録</button>
+  <button onclick="location.href='{{ route('books.create') }}'">新規登録</button>
   <form action="{{ route('books.index') }}" method="get">
     <input type="number" name="id" value="{{ request('id') }}" placeholder="資料ID">
     <input type="submit" value="検索する">
@@ -25,7 +25,10 @@
           <td>{{ $book->id }}</td>
           <td><a href="{{ route('books.show', $book->id) }}">{{ $book->title }}</a></td>
           <td>{{ $book->author }}</td>
-          <td>{{ $book->publish_date }}</td>
+          <?php
+            preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$book->publish_date, $date_match);
+          ?>
+          <td>{{ $date_match[0] }}</td>
         </tr>
       @endforeach
     </table>

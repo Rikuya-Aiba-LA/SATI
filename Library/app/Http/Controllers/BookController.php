@@ -19,7 +19,7 @@ class BookController extends Controller
             $books = Book::where('id',$request->id)->orderBy('created_at','desc')->paginate(20);
 
         }else {
-          $books = Book::orderBy('created_at','desc')->paginate(20); 
+          $books = Book::orderBy('id','desc')->paginate(20); 
         }
         
         return view('books/index',['books' => $books]);
