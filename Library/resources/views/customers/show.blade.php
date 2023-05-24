@@ -61,7 +61,7 @@
     
     <tr>
         <td>{{ $data->book->id }}</td>
-        <td>{{ $data->book->title }}</td>
+        <td><a href="{{route('books.show', $data->book->id)}}">{{ $data->book->title }}</a></td>
         <td>{{ $data->lend_date }}</td>
         <td>{{ $data->book->expected_date }}</td>
         
