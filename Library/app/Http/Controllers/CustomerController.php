@@ -43,7 +43,19 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name'=>'required|max:50',
+            'address'=>'required|max:200',
+            'tel'=>'required|max:20',
+            'email'=>'required|max:50|unique:customers,email',
+            'birth'=>'required',
+            'record_date'=>'required'
+        ]);
+        $customer = new Customer(
+           $request->all()
+        );
+       $customer->save();
+        return redirect(route('customers.index'));
     }
 
     /**
@@ -67,7 +79,7 @@ class CustomerController extends Controller
      */
     public function edit(Customer $customer)
     {
-        //
+        return view('customers/edit',['customer'=>$customer]);
     }
 
     /**
@@ -79,7 +91,18 @@ class CustomerController extends Controller
      */
     public function update(Request $request, Customer $customer)
     {
-        //
+        // dd($request);
+        $this->validate($request, [
+            'name' => 'required|max:50',
+            'address' => 'required|max:200',
+            'tel' => 'required|max:20',
+            'email' => 'max:50',
+            'birth' => 'required'
+
+        ]);
+    
+        $customer->update($request->all());
+        return redirect(route('customers.show',$customer));
     }
 
     /**

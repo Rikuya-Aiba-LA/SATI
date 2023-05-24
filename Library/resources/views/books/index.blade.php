@@ -2,7 +2,7 @@
 
 @section('content')
   <h1>資料管理</h1>
-  <button onclick="location.href='#'">新規登録</button>
+  <button onclick="location.href='{{ route('books.create') }}'">新規登録</button>
   <form action="{{ route('books.index') }}" method="get">
     <input type="number" name="id" value="{{ request('id') }}" placeholder="資料ID">
     <input type="submit" value="検索する">

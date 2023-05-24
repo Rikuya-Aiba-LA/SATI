@@ -2,9 +2,7 @@
 
 @section('content')
 <h1>会員管理画面</h1>
-<form action="#" method="post">
-    <button type="submit" value="#">新規会員登録</button>
-</form>
+    <button onclick="location.href='{{ route('customers.create') }}'">新規会員登録</button>
 <form action="{{ route('customers.index') }}" method="get">
     <input type="email" name="email" value="{{ request('email') }}" placeholder="Email">
     <input type="submit" value="検索する">
