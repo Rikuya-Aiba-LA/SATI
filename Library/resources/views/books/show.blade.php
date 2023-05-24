@@ -5,7 +5,9 @@
   <form action="{{ route('books.index') }}" method="get">
     <button>一覧へ</button>
   </form>
-  <button>編集</button>
+  <form action="{{ route('books.edit', $book) }}" method="get">
+    <button>編集</button>
+  </form>
   <button>削除</button>
   <dl>
     <dt>ISBN: </dt>
@@ -19,6 +21,9 @@
     <dt>出版社: </dt>
     <dd>{{ $book->publisher }}</dd>
     <dt>出版日: </dt>
-    <dd>{{ $book->publish_date }}</dd>
+    <?php
+      preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$book->publish_date, $date_match);
+    ?>
+    <dd>{{ $date_match[0] }}</dd>
   </dl>
 @endsection
