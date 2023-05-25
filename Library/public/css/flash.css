@@ -35,7 +35,7 @@ ul.alert {
     width: 30%;
 }
 
-ul.alert.li {
+ul.alert li {
     list-style: none;
     text-align: center;
 }
