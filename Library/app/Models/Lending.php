@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Lending extends Model
 {
     use HasFactory;
-
+    protected $fillable =[
+        'return_date',
+        
+    ];
     public function book(){
         return $this->belongsTo(Book::class);
     }
