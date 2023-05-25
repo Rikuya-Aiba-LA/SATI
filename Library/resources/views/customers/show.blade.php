@@ -76,7 +76,7 @@
     </tr>
     
     @foreach($customer->lendings as $data)
-    
+    @if($data->return_date == null)
     <tr>
         <td>{{ $data->book->id }}</td>
 
@@ -86,20 +86,15 @@
         ?>
         <td>{{ $lend_date_match[0] }}</td>
         <!--返却予定日-->
-        @if($data->expectied_date)
+        
             <?php
-
-
-
                 preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$data->expectied_date, $expectied_date_match);
 
             ?>
             <td>{{ $expectied_date_match[0] }}</td>
-        @else
-            <td>{{ $data->expectied_date }}</td>
-        @endif
         
-        @if($data->return_date == null)
+        
+        
         <td>
             <form action="{{ route('lendings.update',[$data,$customer]) }}" method="post">
             
@@ -111,10 +106,8 @@
             <input type="submit" value="返却">
            </form>
         </td>
-        
-        @else
-           <td>{{ $data->return_date }}</td>
-        @endif
+    
+    @endif
 
     </tr>
     @endforeach
