@@ -32,7 +32,7 @@
 <hr>
 <?php
   $today = date('Y-m-d');
-  if(date($book->publish_date) > date($today,strtotime("-3 month") )){
+  if(strtotime($book->publish_date) > strtotime("-3 month")){
     //出版日($book->publish_date)が本日から3ヶ月以内
     $expectied_date = date("Y-m-d", strtotime("10 day"));
   }else{
