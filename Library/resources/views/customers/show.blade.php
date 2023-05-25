@@ -27,8 +27,8 @@
         }
     </script> -->
 <!-- 資料検索し資料貸出画面へ -->
-<form action="#" method="get">
-    <input type="number" name="book_id" value="#" placeholder="資料ID">
+<form action="{{ route('lendings.check', $customer) }}" method="get">
+    <input type="number" name="book_id" value="{{ request('id') }}" placeholder="資料ID">
     <input type="submit" value="検索する">
 </form>
 
@@ -64,6 +64,7 @@
         <dd>{{ $customer->unsub_date }}</dd>
     @endif
 </dl>
+
 <hr>
 <h2>貸出中資料</h2>
 <table border="1">
@@ -76,7 +77,7 @@
     </tr>
     
     @foreach($customer->lendings as $data)
-    
+    @if($data->return_date == null)
     <tr>
         <td>{{ $data->book->id }}</td>
 
@@ -86,23 +87,28 @@
         ?>
         <td>{{ $lend_date_match[0] }}</td>
         <!--返却予定日-->
-        @if($data->book->expected_date)
-            <?php
-                preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$data->book->expected_date, $expected_date_match);
-            ?>
-            <td>{{ $expected_date_match[0] }}</td>
-        @else
-            <td>{{ $data->book->expected_date }}</td>
-        @endif
         
-        @if($data->return_date == null)
-            <td><form action="#">
-                <button type="submit">返却</button>
-                <!-- ボタンを押したらポップアップが表示され、はいが選択されたらreturn_dateをその日の年月日が入力される -->
-            </form></td>
-        @else
-           <td>{{ $data->return_date }}</td>
-        @endif
+            <?php
+                preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$data->expectied_date, $expectied_date_match);
+
+            ?>
+            <td>{{ $expectied_date_match[0] }}</td>
+        
+        
+        
+        <td>
+            <form action="{{ route('lendings.update',[$data,$customer]) }}" method="post">
+            
+            @csrf
+            <input type="hidden" name="return_date" value="
+            <?php
+            echo date('Y-m-d');
+            ?>">
+            <input type="submit" value="返却">
+           </form>
+        </td>
+    
+    @endif
 
     </tr>
     @endforeach

@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Lending;
 
+use App\Models\Book;
+use App\Models\Customer;
+
+
 class LendingController extends Controller
 {
     public function index(Request $request){
@@ -18,5 +22,33 @@ class LendingController extends Controller
         }
         
         return view('lendings/index',['lendings'=>$lendings]);
+    }
+
+
+    //確認画面に値を持って遷移するメソッド
+    public function check(Request $request, Customer $customer){
+        $book = Book::find($request->book_id);
+        return view('lendings/check', ['book'=>$book, 'customer'=>$customer]);
+    }
+
+    //確認画面から貸出台帳に登録するメソッド
+    public function store(Request $request){
+        $lending = new Lending(
+            $request->all()
+        );
+        $lending->save();
+        return redirect(route('customers.show', $lending->cust_id));
+    }
+    public function update(Request $request,Lending $lending, Customer $customer)
+    {
+        
+        $this->validate($request, [
+            'return_date'
+
+        ]);
+    
+        $lending->update($request->all());
+        return redirect(route('customers.show',$customer));
+
     }
 }
