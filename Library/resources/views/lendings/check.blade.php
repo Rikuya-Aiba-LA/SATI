@@ -32,8 +32,13 @@
 <hr>
 <?php
   $today = date('Y-m-d');
-  //仮で返却日を+15日にしています
-  $expectied_date = date("Y-m-d", strtotime("10 day"));
+  if(date($book->publish_date) > date($today,strtotime("-3 month") )){
+    //出版日($book->publish_date)が本日から3ヶ月以内
+    $expectied_date = date("Y-m-d", strtotime("10 day"));
+  }else{
+    $expectied_date = date("Y-m-d", strtotime("15 day"));
+  }
+
 ?>
 <h2>貸出日</h2>
   <p>{{ $today }}</p>
