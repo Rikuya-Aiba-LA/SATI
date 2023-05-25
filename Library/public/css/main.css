@@ -86,3 +86,8 @@ button {
 section {
     background-color: #a8b7c5;
 }
+
+svg.w-5.h-5{
+  width: 25px;
+  vertical-align: middle;
+}
