@@ -38,7 +38,7 @@ class LendingController extends Controller
         );
         $lending->save();
         return redirect(route('customers.show', $lending->cust_id));
-
+    }
     public function update(Request $request,Lending $lending, Customer $customer)
     {
         
