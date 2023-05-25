@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+<section>
 <h1>書籍登録</h1>
 @include('commons.flash')
 <form action="{{ route('books.store') }}" method="post" name = "contact_form" >
     @csrf
-    <dl>
+    <dl class="a">
         <dt>ISBN</dt>
         <dd>
             <input type="text" name="isbn" value="{{ old('isbn', $book->isbn) }}">
@@ -77,4 +78,5 @@
         
         ;
     </script>
+</section>
 @endsection

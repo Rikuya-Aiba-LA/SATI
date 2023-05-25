@@ -13,7 +13,7 @@
        
 }
 
-li+li{
+header li+li{
     border-left: 1px solid #000;
 
 }
