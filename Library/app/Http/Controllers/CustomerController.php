@@ -71,12 +71,13 @@ class CustomerController extends Controller
     {
         $today = date('Y-m-d');
         $count = 0;
+        $lend_num = $customer->lendings->whereNull('return_date')->count();
         foreach($customer->lendings as $data){
             if(strtotime($today) > strtotime($data->expectied_date) && is_null($data->return_date)){
                 $count++;
             }
         }
-        return view('customers/show', ['customer'=>$customer, 'count'=>$count]);
+        return view('customers/show', ['customer'=>$customer, 'count'=>$count, 'lend_num'=>$lend_num]);
     }
 
     /**
