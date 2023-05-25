@@ -7,10 +7,11 @@
 </head>
 <body>
     <header>
-        @include('commons/nav')
-        <div class="container">
+    <div class="container">
             <a class="brand" href="/">{{ config('app.name') }}</a>
         </div>
+        @include('commons/nav')
+
     </header>
     <main>
         <div class="container">
