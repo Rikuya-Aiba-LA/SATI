@@ -45,6 +45,7 @@
         </tr>
       @endforeach
     </table>
+    {{ $books->links() }}
   @endif
   <form action="{{ route('books.index') }}" method="get">
     <input type="hidden" name="id" value = ''>

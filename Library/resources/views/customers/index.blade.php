@@ -29,6 +29,7 @@
     @endforeach
         
 </table>
+{{ $customers->links() }}
 @endif
 <form action="{{ route('customers.index') }}" method="get">
     <input type="hidden" name="email" value = ''>

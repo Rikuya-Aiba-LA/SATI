@@ -50,6 +50,7 @@
         @endforeach
     </tbody>
     </table>
+    {{ $lendings->links() }}
     @endif
     <form action="{{ route('lendings.index') }}" method="get">
     <input type="hidden" name="cust_id" value = '0'>
