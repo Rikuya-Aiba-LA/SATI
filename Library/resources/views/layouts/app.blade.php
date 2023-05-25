@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ config('app.name') }}</title>
-    <link rel="stylesheet" href="#">
+    <link rel="stylesheet" href="/css/nav.css">
 </head>
 <body>
     <header>
-        @include('commons/nav')
-        <div class="container">
+    <div class="container">
             <a class="brand" href="/">{{ config('app.name') }}</a>
         </div>
+        @include('commons/nav')
+
     </header>
     <main>
         <div class="container">
