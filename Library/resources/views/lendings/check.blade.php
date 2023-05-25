@@ -40,6 +40,10 @@
   }
 
 ?>
+@if($book->lendings->whereNull('return_date')->count())
+<p>この本は現在貸出中です</p>
+<a href="{{route('customers.show',$customer)}}">会員詳細画面に戻る</a>
+@else
 <h2>貸出日</h2>
   <p>{{ $today }}</p>
   <input type="hidden" name="lend_date" value="{{ $today }}">
@@ -48,4 +52,5 @@
   <input type="hidden" name="expectied_date" value="{{ $expectied_date }}">
   <input type="submit" value="貸出する">
 </form>
+@endif
 @endsection
