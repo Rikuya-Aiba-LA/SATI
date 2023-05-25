@@ -19,7 +19,7 @@ ul.alert {
     /* margin-right: 1rem; */
     margin: 5rem 20rem 5rem 1rem;
 
-    font-family: 'Noto Serif JP', serif;
+    font-family: "游ゴシック体", "YuGothic";
 
     /* 拡大縮小 */
     transform: scaleY(1.5);
@@ -30,17 +30,12 @@ ul.alert {
     font-size: 15px;
 
     /* フォントの太さ */
-    font-weight: 200;
+    font-weight: 700;
     /* 画面の大きさに合わせる */
     width: 30%;
-
 }
 
-li {
+ul.alert.li {
     list-style: none;
-}
-
-text {
-    color: #010101,
-    te
+    text-align: center;
 }
