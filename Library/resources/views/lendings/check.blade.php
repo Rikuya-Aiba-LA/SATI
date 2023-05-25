@@ -43,6 +43,9 @@
 @if($book->lendings->whereNull('return_date')->count())
 <p>この本は現在貸出中です</p>
 <a href="{{route('customers.show',$customer)}}">会員詳細画面に戻る</a>
+@elseif(isset($book->trash_date))
+<p>この本は廃棄済みです。</p>
+<a href="{{route('customers.show',$customer)}}">会員詳細画面に戻る</a>
 @else
 <h2>貸出日</h2>
   <p>{{ $today }}</p>
