@@ -64,6 +64,7 @@
         <dd>{{ $customer->unsub_date }}</dd>
     @endif
 </dl>
+
 <hr>
 <h2>貸出中資料</h2>
 <table border="1">
