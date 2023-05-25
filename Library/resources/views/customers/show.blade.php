@@ -9,20 +9,23 @@
 <form action="{{route('customers.edit', $customer->id) }}">
     <button type="submit">情報変更</button>
 </form>
-<form action="{{ route('customers.unsub',$customer->id) }}" method= "post">
-                
-                @csrf
-                <input type="hidden" name="unsub_date" value="<?php echo date('Y-m-j');?>">
-                <input type="submit" value="退会">
-            </form>
+<form action="{{ route('customers.unsub',$customer->id) }}" method= "post">            
+    @csrf
+    <input type="hidden" name="unsub_date" value="<?php echo date('Y-m-j');?>">
+    <input type="submit" value="退会">
+</form>
     
 </form>
 <!-- 資料検索し資料貸出画面へ -->
-<form action="{{ route('lendings.check', $customer) }}" method="get">
-    <input type="number" name="book_id" value="{{ request('id') }}" placeholder="資料ID" required>
-    <input type="submit" value="検索する">
-</form>
-
+@if($count > 0)
+     <p>返却日を過ぎたの資料が{{ $count }}冊あります</p>
+@else
+    <form action="{{ route('lendings.check', $customer) }}" method="get">
+        <input type="number" name="book_id" value="{{ request('id') }}" placeholder="資料ID" required>
+        <input type="submit" value="検索する">
+    </form>
+@endif
+    
 
 <dl>
     <dt>会員ID: </dt>
@@ -66,7 +69,10 @@
         <th>返却予定日</th>
         <th>返却</th>
     </tr>
-    
+    <?php
+        $today = date('Y-m-d');
+        $count = 0;
+    ?>
     @foreach($customer->lendings as $data)
     @if($data->return_date == null)
     <tr>
@@ -78,15 +84,10 @@
         ?>
         <td>{{ $lend_date_match[0] }}</td>
         <!--返却予定日-->
-        
-            <?php
-                preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$data->expectied_date, $expectied_date_match);
-
-            ?>
-            <td>{{ $expectied_date_match[0] }}</td>
-        
-        
-        
+        <?php
+            preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$data->expectied_date, $expectied_date_match);
+        ?>
+        <td>{{ $expectied_date_match[0] }}</td> 
         <td>
             <form action="{{ route('lendings.update',[$data,$customer]) }}" method="post">
             

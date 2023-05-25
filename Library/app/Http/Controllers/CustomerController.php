@@ -10,7 +10,7 @@ class CustomerController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index(Request $request)
     {
@@ -30,7 +30,7 @@ class CustomerController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function create()
     {
@@ -42,7 +42,7 @@ class CustomerController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function store(Request $request)
     {
@@ -65,20 +65,25 @@ class CustomerController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Customer  $customer
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function show(Request $request,Customer $customer)
     {
-        
-        return view('customers/show', ['customer'=>$customer]);
-        
+        $today = date('Y-m-d');
+        $count = 0;
+        foreach($customer->lendings as $data){
+            if(strtotime($today) > strtotime($data->expectied_date) && is_null($data->return_date)){
+                $count++;
+            }
+        }
+        return view('customers/show', ['customer'=>$customer, 'count'=>$count]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Customer  $customer
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function edit(Customer $customer)
     {
@@ -90,7 +95,7 @@ class CustomerController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Customer  $customer
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function update(Request $request, Customer $customer)
     {
@@ -112,7 +117,7 @@ class CustomerController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Customer  $customer
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function unsub(Request $request,Customer $customer)
     {
