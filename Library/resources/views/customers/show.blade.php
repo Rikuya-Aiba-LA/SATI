@@ -18,7 +18,9 @@
 </form>
 <!-- 資料検索し資料貸出画面へ -->
 @if($count > 0)
-     <p>返却日を過ぎたの資料が{{ $count }}冊あります</p>
+    <p>返却日を過ぎたの資料が{{ $count }}冊あります</p>
+@elseif($lend_num >=  5)
+    <p>同時に借りられる資料は5冊までです</p>
 @else
     <form action="{{ route('lendings.check', $customer) }}" method="get">
         <input type="number" name="book_id" value="{{ request('id') }}" placeholder="資料ID" required>
