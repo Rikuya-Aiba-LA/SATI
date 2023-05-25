@@ -27,8 +27,8 @@
         }
     </script> -->
 <!-- 資料検索し資料貸出画面へ -->
-<form action="#" method="get">
-    <input type="number" name="book_id" value="#" placeholder="資料ID">
+<form action="{{ route('lendings.check', $customer) }}" method="get">
+    <input type="number" name="book_id" value="{{ request('id') }}" placeholder="資料ID">
     <input type="submit" value="検索する">
 </form>
 
@@ -88,7 +88,11 @@
         <!--返却予定日-->
         @if($data->expectied_date)
             <?php
+
+
+
                 preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$data->expectied_date, $expectied_date_match);
+
             ?>
             <td>{{ $expectied_date_match[0] }}</td>
         @else

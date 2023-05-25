@@ -27,7 +27,10 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('books', BookController::class);
     Route::patch('books/trash/{book}', [BookController::class, 'trash'])->name('books.trash');
     Route::get('/lendings/index', [LendingController::class, 'index'])->name('lendings.index');
-    Route::post('/lendings/store',[LendingController::class, 'store'])->name('lendings.store');
+
+    Route::get('lendings/check/{customer}', [LendingController::class, 'check'])->name('lendings.check');
+    Route::post('lendings/store', [LendingController::class, 'store'])->name('lendings.store');
+
     Route::post('/customers/unsub/{customer}',[CustomerController::class, 'unsub'])->name('customers.unsub');
     Route::post('/lendings/update/{lending}/{customer}',[lendingController::class, 'update'])->name('lendings.update');
 
