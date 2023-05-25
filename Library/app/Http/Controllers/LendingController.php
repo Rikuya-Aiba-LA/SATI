@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Lending;
+use App\Models\Customer;
+
 
 class LendingController extends Controller
 {
@@ -18,5 +20,16 @@ class LendingController extends Controller
         }
         
         return view('lendings/index',['lendings'=>$lendings]);
+    }
+    public function update(Request $request,Lending $lending, Customer $customer)
+    {
+        
+        $this->validate($request, [
+            'return_date'
+
+        ]);
+    
+        $lending->update($request->all());
+        return redirect(route('customers.show',$customer));
     }
 }

@@ -86,20 +86,28 @@
         ?>
         <td>{{ $lend_date_match[0] }}</td>
         <!--返却予定日-->
-        @if($data->book->expected_date)
+        @if($data->expectied_date)
             <?php
-                preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$data->book->expected_date, $expected_date_match);
+                preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$data->expectied_date, $expectied_date_match);
             ?>
-            <td>{{ $expected_date_match[0] }}</td>
+            <td>{{ $expectied_date_match[0] }}</td>
         @else
-            <td>{{ $data->book->expected_date }}</td>
+            <td>{{ $data->expectied_date }}</td>
         @endif
         
         @if($data->return_date == null)
-            <td><form action="#">
-                <button type="submit">返却</button>
-                <!-- ボタンを押したらポップアップが表示され、はいが選択されたらreturn_dateをその日の年月日が入力される -->
-            </form></td>
+        <td>
+            <form action="{{ route('lendings.update',[$data,$customer]) }}" method="post">
+            
+            @csrf
+            <input type="hidden" name="return_date" value="
+            <?php
+            echo date('Y-m-d');
+            ?>">
+            <input type="submit" value="返却">
+           </form>
+        </td>
+        
         @else
            <td>{{ $data->return_date }}</td>
         @endif
