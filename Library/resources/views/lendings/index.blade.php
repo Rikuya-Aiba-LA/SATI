@@ -38,13 +38,13 @@
                 preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$lending->expectied_date, $expected_date_match);
             ?>
             <td>{{ $expected_date_match[0] }}</td>
-            @if($lending->return)
+            @if($lending->return_date)
                 <?php
-                    preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$lending->return, $return_date_match);
+                    preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$lending->return_date, $return_date_match);
                 ?>
                 <td>{{ $return_date_match[0] }}</td>
             @else
-                <td>{{ $lending->return_date }}</td>
+                <td>未返却</td>
             @endif
         </tr>
         @endforeach
