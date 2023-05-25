@@ -17,18 +17,9 @@
             </form>
     
 </form>
-<!-- 削除ボタンが押されたら退会日が入力される処理。確認のポップアップも表示 -->
-<!-- <script type="text/javascript">
-        function deleteBook(){
-            event.preventDefault();
-            if(window.confirm('本当に削除しますか')){
-                document.getElementById('delete-form').submit();
-            }
-        }
-    </script> -->
 <!-- 資料検索し資料貸出画面へ -->
 <form action="{{ route('lendings.check', $customer) }}" method="get">
-    <input type="number" name="book_id" value="{{ request('id') }}" placeholder="資料ID">
+    <input type="number" name="book_id" value="{{ request('id') }}" placeholder="資料ID" required>
     <input type="submit" value="検索する">
 </form>
 
