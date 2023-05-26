@@ -12,12 +12,12 @@
     <input type="submit" value="検索する">
   </form>
   <form action="{{ route('books.index') }}" method="get">
-    <input type="hidden" name="trash_date" value="日本語">
-    <input type="submit" onclick="changeTrash()" value="廃棄済み資料">
-  </form>
-  <form action="{{ route('books.index') }}" method="get">
     <input type="hidden" name="id" value = ''>
     <input type="submit" onclick="changeExists()" value="在庫資料一覧">
+  </form>
+  <form action="{{ route('books.index') }}" method="get">
+    <input type="hidden" name="trash_date" value="日本語">
+    <input type="submit" onclick="changeTrash()" value="廃棄済み資料">
   </form>
   <hr>
   @if($books->count() == 0)
