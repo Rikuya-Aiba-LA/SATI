@@ -33,10 +33,7 @@
         @endif
         
     </dd>
-    <dt>今日の日付</dt>
-    <dd>
-        <input type="date" name="record_date" value="{{ old('record_date', $customer->record_date) }}">
-    </dd>
+    <input type="hidden" name="record_date" value="{{ date('Y-m-d') }}">
 </dl>
 <button onclick = "createCustomer()" name = "check">登録確認</button>
 </form>
@@ -56,7 +53,7 @@
                     + "電話番号:" + tel + "\n"
                     + "E-mail:" + email + "\n"
                     + "生年月日:" + birth + "\n"
-                    + "今日の日付:" + record_date)
+                    + "登録日:" + record_date)
         ) {
                 contact_form.submit();
             }

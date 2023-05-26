@@ -3,12 +3,16 @@
 @section('content')
 <body>
     <h1>貸出台帳</h1>
-<form action="{{ route('lendings.index') }}" method="get">
-    <input type="number" name="cust_id"  placeholder="会員番号ID" value="{{ request('cust_id') }}" required min="1">
-    <input type="submit" value="検索する">
-  </form>
+    <form action="{{ route('lendings.index') }}" method="get">
+        <input type="number" name="cust_id"  placeholder="会員ID" value="{{ request('cust_id') }}" required min="1">
+        <input type="submit" value="検索する">
+    </form>
+    <form action="{{ route('lendings.index') }}" method="get">
+        <input type="hidden" name="cust_id" value = '0'>
+        <input type="submit" value="貸出一覧">
+    </form>
  @if($lendings->count() == 0)
-<p>該当するIDが存在しません</p>
+<p>該当する会員の貸出情報が存在しません</p>
  @else
     <table>
     <thead>
@@ -52,8 +56,4 @@
     </table>
     {{ $lendings->links() }}
     @endif
-    <form action="{{ route('lendings.index') }}" method="get">
-    <input type="hidden" name="cust_id" value = '0'>
-    <input type="submit" value="一覧で表示する">
-  </form>
 @endsection
