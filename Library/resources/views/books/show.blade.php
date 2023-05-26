@@ -8,19 +8,22 @@
   <form action="{{ route('books.edit', $book) }}" method="get">
     <button>編集</button>
   </form>
-
-  @if($book->lendings->whereNull('return_date')->count() > 0)
-  <p>この資料は貸出中の為廃棄できません</p>
+  @if($book->trash_date)
+    <p>資料は廃棄済みです</p>
   @else
-  <form action="{{ route('books.trash', $book->id) }}" method="post">
-    @method('patch')
-    @csrf
-    <input type="hidden" name="trash_date" value="
-    <?php
-      echo date('Y-m-d');
-    ?>">
-    <input type="submit" value="廃棄">
-  </form>
+    @if($book->lendings->whereNull('return_date')->count() > 0)
+    <p>この資料は貸出中の為廃棄できません</p>
+    @else
+    <form action="{{ route('books.trash', $book->id) }}" method="post">
+      @method('patch')
+      @csrf
+      <input type="hidden" name="trash_date" value="
+      <?php
+        echo date('Y-m-d');
+      ?>">
+      <input type="submit" value="廃棄">
+    </form>
+    @endif
   @endif
   <dl>
     <dt>ISBN: </dt>
