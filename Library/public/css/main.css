@@ -84,10 +84,81 @@ button {
 }
 
 section {
-    background-color: #a8b7c5;
+  
 }
 
 svg.w-5.h-5{
   width: 25px;
   vertical-align: middle;
+}
+
+/* メニュー画面 */
+.title {
+  font-size: 65px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+  color: brown;
+  display: block;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  text-align: center;
+  padding-top: 100px;
+}
+
+.flex {
+  display: flex;
+
+}
+
+.element {
+  align-items: center;
+  margin-block-start: 100px;
+  margin-block-end: 100px;
+  margin-inline-start: 80px;
+  margin-inline-end: 10px;
+  padding-left: 70px;
+
+}
+
+.element a {
+  font-size: 40px;
+  color: green;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+  text-decoration: none;
+}
+
+.element a:hover {
+  text-decoration: underline;
+}
+
+.menu {
+  height: 600px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  
+}
+.menu::after {
+  content:"";
+  background-image: url(image/book3.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color:rgba(0, 0, 255, 0.418);
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.6;
+}
+
+
+
+.menu p+p {
+  border-left: 1px solid black;
 }
