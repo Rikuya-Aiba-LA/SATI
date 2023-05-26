@@ -4,7 +4,7 @@
 <h1>会員管理画面</h1>
     <button onclick="location.href='{{ route('customers.create') }}'">新規会員登録</button>
 <form action="{{ route('customers.index') }}" method="get">
-    <input type="email" name="email" value="{{ request('email') }}" placeholder="Email">
+    <input type="email" name="email" value="{{ request('email') }}" placeholder="Email" required>
     <input type="submit" value="検索する">
   </form>
   <form action="{{ route('customers.index') }}" method="get">

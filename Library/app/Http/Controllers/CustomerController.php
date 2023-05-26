@@ -49,8 +49,8 @@ class CustomerController extends Controller
         $this->validate($request,[
             'name'=>'required|max:50',
             'address'=>'required|max:200',
-            'tel'=>'required|max:20',
-            'email'=>'required|max:50|unique:customers,email',
+            'tel'=>'required|max:20|numeric',
+            'email'=>'required|max:50|unique:customers,email|email:filter',
             'birth'=>'required',
             'record_date'=>'required'
         ]);
@@ -104,8 +104,8 @@ class CustomerController extends Controller
         $this->validate($request, [
             'name' => 'required|max:50',
             'address' => 'required|max:200',
-            'tel' => 'required|max:20',
-            'email' => 'required|max:50',
+            'tel' => 'required|regex:/^(0{1}\d{1,4}-{0,1}\d{1,4}-{0,1}\d{4})$/',
+            'email'=>'required|max:50|email:filter',
             'birth' => 'required'
 
         ]);

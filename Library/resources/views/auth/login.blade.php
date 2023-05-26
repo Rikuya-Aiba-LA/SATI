@@ -18,11 +18,11 @@
                 @csrf
                 <p>
                     <label>メールアドレス</label><br>
-                    <input type="email" name="email" value="{{ old('email') }}">
+                    <input type="email" name="email" value="{{ old('email') }}" required>
                 </p>
                 <p>
                     <label>パスワード</label><br>
-                    <input type="password" name="password" value="">
+                    <input type="password" name="password" value="" required>
                 </p>
                 <p>
                     <button type="submit">ログイン</button>

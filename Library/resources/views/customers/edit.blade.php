@@ -17,7 +17,7 @@
         </dd>
         <dt>電話番号</dt>
         <dd>
-            <input type="text" name="tel" value="{{ old('tel', $customer->tel) }}">
+            <input type="tel" name="tel" value="{{ old('tel', $customer->tel) }}">
         </dd>
         <dt>E-mail</dt>
         <dd>

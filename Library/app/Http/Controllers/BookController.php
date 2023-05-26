@@ -51,11 +51,12 @@ class BookController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'isbn'=>'required|size:13',
+            'isbn'=>'required|regex:/^\d{13}$/',
             'title'=>'required|max:255',
-            'classify_id'=>'max:9',
-            'publisher'=>'max:255',
-            'publish_date'
+            'classify_id'=>'required|max:9',
+            'author'=>'required|max:50',
+            'publisher'=>'required|max:50',
+            'publish_date'=>'required',
         ]);
         $book = new Book(
            $request->all()
@@ -96,11 +97,12 @@ class BookController extends Controller
     public function update(Request $request, Book $book)
     {
         $this->validate($request,[
-            'isbn'=>'required|size:13',
+            'isbn'=>'required|regex:/^\d{13}$/',
             'title'=>'required|max:255',
-            'classify_id'=>'max:9',
-            'publisher'=>'max:255',
-            'publish_date'
+            'classify_id'=>'required|max:9',
+            'author'=>'required|max:50',
+            'publisher'=>'required|max:50',
+            'publish_date'=>'required',
         ]);
         $book->update($request->all());
         return redirect(route('books.show', $book));
