@@ -8,7 +8,14 @@
   <form action="{{ route('books.edit', $book) }}" method="get">
     <button>編集</button>
   </form>
-  <form action="{{ route('books.trash', $book->id) }}" method="post" name="contact_form">
+
+  @if($book->trash_date)
+    <p>資料は廃棄済みです</p>
+  @else
+    @if($book->lendings->whereNull('return_date')->count() > 0)
+    <p>この資料は貸出中の為廃棄できません</p>
+    @else
+      <form action="{{ route('books.trash', $book->id) }}" method="post" name="contact_form">
     @method('patch')
     @csrf
     <input type="hidden" name="trash_date" value="
@@ -44,6 +51,8 @@
         
         ;
   </script>
+    @endif
+  @endif
   <dl>
     <dt>ISBN: </dt>
     <dd>{{ $book->isbn }}</dd>

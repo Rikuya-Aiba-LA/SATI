@@ -9,6 +9,7 @@
 <form action="{{route('customers.edit', $customer->id) }}">
     <button type="submit">情報変更</button>
 </form>
+
 @if($lend_num > 0)
 <p>未返却図書があります。<br>退会できません</p>
 @else
@@ -45,11 +46,23 @@
 </form>
 <!-- 資料検索し資料貸出画面へ -->
 @if($customer->unsub_date)
-<p>この会員は退会済みです</p>
+    <p>この会員は退会済みです</p>
+@else
+    @if($lend_num > 0)
+        <p>退会不可: </p>
+        <p>未返却図書があるため退会できません</p>
     @else
+        <form action="{{ route('customers.unsub',$customer->id) }}" method= "post">            
+            @csrf
+            <input type="hidden" name="unsub_date" value="<?php echo date('Y-m-j');?>">
+            <input type="submit" value="退会">
+        </form>
+    @endif
     @if($count > 0)
+        <p>貸出不可: </p>
         <p>返却日を過ぎたの資料が{{ $count }}冊あります</p>
     @elseif($lend_num >=  5)
+        <p>貸出不可: </p>
         <p>同時に借りられる資料は5冊までです</p>
     @else
         <form action="{{ route('lendings.check', $customer) }}" method="get">
@@ -58,8 +71,8 @@
         </form>
     @endif
 @endif
-    
 
+<hr>
 <dl>
     <dt>会員ID: </dt>
     <dd>{{ $customer->id }}</dd>
