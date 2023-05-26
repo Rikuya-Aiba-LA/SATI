@@ -1,9 +1,6 @@
 @if(Auth::check())
 <ul class="navgation">
     <li class="inline">
-        <a href="{{ route('home') }}">メニュー画面</a>
-    </li>
-    <li class="inline">
         <a href="{{ route('books.index') }}">資料一覧</a>
     </li>
     <li class="inline">
