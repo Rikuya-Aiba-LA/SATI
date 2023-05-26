@@ -29,6 +29,14 @@
     <dd>
       <p>{{ $book->title }}</p>
     </dd>
+    <dt>著者</dt>
+    <dd>
+      <p>{{ $book->author }}</p>
+    </dd>
+    <dt>出版社</dt>
+    <dd>
+      <p>{{ $book->publisher }}</p>
+    </dd>
   </dl>
   <hr>
   <?php

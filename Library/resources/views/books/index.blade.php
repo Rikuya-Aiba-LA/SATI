@@ -21,7 +21,7 @@
   </form>
   <hr>
   @if($books->count() == 0)
-    <p>該当するIDが存在しません</p>
+    <p>該当する資料が存在しません</p>
   @else
     <table border="1">
       <thead>

@@ -2,7 +2,7 @@
 
 @section('content')
 <section>
-<h1>書籍登録</h1>
+<h1>資料登録</h1>
 @include('commons.flash')
 <form action="{{ route('books.store') }}" method="post" name = "contact_form" >
     @csrf

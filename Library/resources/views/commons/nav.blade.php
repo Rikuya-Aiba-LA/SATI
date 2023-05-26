@@ -1,10 +1,10 @@
 @if(Auth::check())
 <ul class="navgation">
     <li class="inline">
-        <a href="{{ route('books.index') }}">資料一覧</a>
+        <a href="{{ route('customers.index') }}">会員管理</a>
     </li>
     <li class="inline">
-        <a href="{{ route('customers.index') }}">会員一覧</a>
+        <a href="{{ route('books.index') }}">資料管理</a>
     </li>
     <li class="inline">
         <a href="{{ route('lendings.index') }}">貸出台帳</a>

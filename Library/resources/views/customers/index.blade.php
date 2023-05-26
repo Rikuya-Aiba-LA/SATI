@@ -1,18 +1,26 @@
 @extends('layouts/app')
 
 @section('content')
-<h1>会員管理画面</h1>
+@if($customers->whereNotNull('unsub_date')->count() > 0)
+    <h1>退会会員一覧</h1>
+@else
+    <h1>登録会員一覧</h1>
+@endif
     <button onclick="location.href='{{ route('customers.create') }}'">新規会員登録</button>
 <form action="{{ route('customers.index') }}" method="get">
     <input type="email" name="email" value="{{ request('email') }}" placeholder="Email" required>
     <input type="submit" value="検索する">
-  </form>
-  <form action="{{ route('customers.index') }}" method="get">
+</form>
+<form action="{{ route('customers.index') }}" method="get">
+    <input type="hidden" name="email" value = ''>
+    <input type="submit" value="登録会員一覧">
+</form>
+<form action="{{ route('customers.index') }}" method="get">
     <input type="hidden" name="unsub_date" value="1">
-    <input type="submit" value="退会者の表示">
-  </form>
+    <input type="submit" value="退会会員一覧">
+</form>
 @if($customers->count() == 0)
-<p>該当するIDが存在しません</p>
+<p>該当する会員が存在しません</p>
  @else
 <table border="1">
     <tr>
@@ -31,8 +39,4 @@
 </table>
 {{ $customers->links() }}
 @endif
-<form action="{{ route('customers.index') }}" method="get">
-    <input type="hidden" name="email" value = ''>
-    <input type="submit" value="一覧で表示する">
-</form>
 @endsection

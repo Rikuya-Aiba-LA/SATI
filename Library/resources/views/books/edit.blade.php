@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-  <h1>資料情報更新</h1>
+  <h1>資料編集</h1>
   @include('commons.flash')
   <form action="{{ route('books.update', $book->id) }}" method="post" name = "contact_form">
     @method('patch')

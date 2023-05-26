@@ -7,7 +7,7 @@
   </form>
 <!-- 会員の情報を変更するために会員情報変更画面へ飛ぶ -->
 <form action="{{route('customers.edit', $customer->id) }}">
-    <button type="submit">情報変更</button>
+    <button type="submit">編集</button>
 </form>
 @if($customer->unsub_date)
     <p>この会員は退会済みです</p>
