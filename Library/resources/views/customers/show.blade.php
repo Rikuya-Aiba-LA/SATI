@@ -16,11 +16,34 @@
         <p>退会不可: </p>
         <p>未返却図書があるため退会できません</p>
     @else
-        <form action="{{ route('customers.unsub',$customer->id) }}" method= "post">            
+        <form action="{{ route('customers.unsub',$customer->id) }}" method= "post" name="contact_form">         
             @csrf
             <input type="hidden" name="unsub_date" value="<?php echo date('Y-m-j');?>">
-            <input type="submit" value="退会">
+            <button onclick="unsubCustomer()">退会</button>
         </form>
+        <script>
+        //[確認]ボタンが押されたときの処理を定義
+       function unsubCustomer() {
+            //input要素の入力内容を取得
+            const name = "{{$customer->name}}";
+            const address = "{{$customer->address}}";
+            const tel = "{{$customer->tel}}";
+            const email = "{{$customer->email}}";
+            const birth = "{{$customer->birth}}";
+            const record_date = "{{$customer->record_date}}";
+            event.preventDefault();
+            if (confirm('以下の会員が退会しますか？\n' + "氏名:" + name + "\n"
+                    + "住所:" + address +"\n"
+                    + "電話番号:" + tel + "\n"
+                    + "E-mail:" + email + "\n"
+                    + "生年月日:" + birth + "\n"
+                    + "今日の日付:" + record_date)
+        ) {
+                contact_form.submit();
+            }
+        }
+        ;
+    </script>
     @endif
     @if($count > 0)
         <p>貸出不可: </p>
@@ -99,16 +122,35 @@
         ?>
         <td>{{ $expectied_date_match[0] }}</td> 
         <td>
-            <form action="{{ route('lendings.update',[$data,$customer]) }}" method="post">
+        <form action="{{ route('lendings.update',[$data,$customer]) }}" method="post" name="return_form">
             
             @csrf
             <input type="hidden" name="return_date" value="
             <?php
             echo date('Y-m-d');
             ?>">
-            <input type="submit" value="返却">
+           <button onclick="returnBook()">返却</button>
            </form>
         </td>
+        <script>
+        //[確認]ボタンが押されたときの処理を定義
+       function returnBook() {
+            //input要素の入力内容を取得
+            const id = "{{$data->book->id}}";
+            const title = "{{$data->book->title}}";
+            const lend_date = "{{$data->lend_date}}";
+            const expectied_date = "{{$data->expectied_date}}";
+            event.preventDefault();
+            if (confirm('以下の本を返却しますか？\n' + "資料ID:" + id + "\n"
+                    + "資料名:" + title +"\n"
+                    + "貸出日:" + lend_date + "\n"
+                    + "返却予定日:" + expectied_date )
+        ) {
+                return_form.submit();
+            }
+        }
+        ;
+    </script>
     
     @endif
 

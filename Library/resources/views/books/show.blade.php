@@ -9,18 +9,51 @@
     <button>編集</button>
   </form>
 
+  @if($book->trash_date)
+    <p>資料は廃棄済みです</p>
+
+  @else
   @if($book->lendings->whereNull('return_date')->count() > 0)
   <p>この資料は貸出中のため廃棄できません</p>
-  @else
-  <form action="{{ route('books.trash', $book->id) }}" method="post">
-    @method('patch')
-    @csrf
-    <input type="hidden" name="trash_date" value="
-    <?php
-      echo date('Y-m-d');
-    ?>">
-    <input type="submit" value="廃棄">
-  </form>
+
+    @else
+    <form action="{{ route('books.trash', $book->id) }}" method="post" name="contact_form">
+      @method('patch')
+      @csrf
+      <input type="hidden" name="trash_date" value="
+      <?php
+        echo date('Y-m-d');
+      ?>">
+      <button onclick="trashBook()" name="check">廃棄</button>
+    </form>
+    <script>
+        //[確認]ボタンが押されたときの処理を定義
+       function trashBook() {
+            //input要素（name属性がisbn）の入力内容を取得
+            const isbn = "{{$book->isbn}}" ;
+            const title = "{{$book->title}}";
+            const classify_id = "{{$book->classify_id}}";
+            const author = "{{$book->author}}";
+            const publisher = "{{$book->publisher}}";
+            const publish_date = "{{$book->publish_date}}"
+            
+            event.preventDefault();
+            if (confirm('以下の資料を廃棄しますか？\n' + "ISBN番号" + isbn + "\n"
+                    + "資料名:" + title +"\n" 
+                    + "分類コード:" + classify_id + "\n" 
+                    + "著者:" + author + "\n"
+                    + "出版社:" + publisher + "\n"
+                    + "出版日:" + publish_date 
+                    
+                    )
+        ) {
+                contact_form.submit();
+            }
+        }
+        
+        ;
+  </script>
+    @endif
   @endif
   <dl>
     <dt>ISBN: </dt>
