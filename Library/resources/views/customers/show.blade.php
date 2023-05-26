@@ -141,7 +141,7 @@
             const lend_date = "{{$data->lend_date}}";
             const expectied_date = "{{$data->expectied_date}}";
             event.preventDefault();
-            if (confirm('以下の本を返却しますか？\n' + "資料ID:" + id + "\n"
+            if (confirm('以下の資料を返却しますか？\n' + "資料ID:" + id + "\n"
                     + "資料名:" + title +"\n"
                     + "貸出日:" + lend_date + "\n"
                     + "返却予定日:" + expectied_date )

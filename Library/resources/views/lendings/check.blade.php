@@ -76,7 +76,7 @@
             const publisher = "{{$book->publisher}}";
             const expectied_date = "{{$expectied_date}}";
             event.preventDefault();
-            if (confirm('以下の本を返却しますか？\n' + "会員ID:" + id + "\n"
+            if (confirm('以下の資料を貸出しますか？\n' + "会員ID:" + id + "\n"
                     + "氏名:" + name +"\n"
                     + "資料ID:" + book_id +"\n"
                     + "資料名:" + title + "\n"
