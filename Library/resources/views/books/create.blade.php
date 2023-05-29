@@ -4,7 +4,7 @@
 <section>
 <h1>資料登録</h1>
 @include('commons.flash')
-<form action="{{ route('books.store') }}" method="post" name = "contact_form" >
+<form action="{{ route('books.store') }}" method="post" class="button_line004" name = "contact_form" >
     @csrf
     <dl class="a">
         <dt>ISBN</dt>
@@ -51,7 +51,7 @@
             @endif
         </dd>
     </dl>
-    <button onclick = "createBook()" name = "check">登録</button>
+    <button onclick = "createBook()" class="btn2" name = "check">登録</button>
 </form>
 
 <script>

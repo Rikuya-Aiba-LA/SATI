@@ -52,9 +52,9 @@
         <p>貸出不可: </p>
         <p>同時に借りられる資料は5冊までです</p>
     @else
-        <form action="{{ route('lendings.check', $customer) }}" method="get">
+        <form action="{{ route('lendings.check', $customer) }}"  class="button001" method="get">
             <input type="number" name="book_id" value="{{ request('id') }}" placeholder="資料ID" required>
-            <input type="submit" value="検索する">
+            <input type="submit" class="btn" value="検索する">
         </form>
     @endif
 @endif

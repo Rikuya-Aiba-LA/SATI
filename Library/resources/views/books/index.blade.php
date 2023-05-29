@@ -7,9 +7,9 @@
     <h1>在庫資料一覧</h1>
   @endif
   <button onclick="location.href='{{ route('books.create') }}'">新規登録</button>
-  <form action="{{ route('books.index') }}" method="get">
+  <form action="{{ route('books.index') }}" class="button001" method="get">
     <input type="number" name="id" value="{{ request('id') }}" placeholder="資料ID" required>
-    <input type="submit" value="検索する">
+    <input type="submit" class="btn" value="検索する">
   </form>
   <form action="{{ route('books.index') }}" method="get">
     <input type="hidden" name="id" value = ''>
