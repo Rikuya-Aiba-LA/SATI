@@ -3,9 +3,9 @@
 @section('content')
 <body>
     <h1>貸出台帳</h1>
-    <form action="{{ route('lendings.index') }}" method="get">
+    <form action="{{ route('lendings.index') }}" class="button001" method="get">
         <input type="number" name="cust_id"  placeholder="会員ID" value="{{ request('cust_id') }}" required min="1">
-        <input type="submit" value="検索する">
+        <input type="submit" class="btn" value="検索する">
     </form>
     <form action="{{ route('lendings.index') }}" method="get">
         <input type="text" name="title"  placeholder="資料名" value="{{ request('title') }}">

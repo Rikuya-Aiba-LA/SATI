@@ -28,6 +28,8 @@ header{
     background-color: #C49062;
     border-style: groove;
     height: 65px;
+    margin: 0;
+    padding: 0;
 }
 header div{
     font-size: 30px;
