@@ -130,7 +130,7 @@ h1 {
 /* create画面登録ボタン */
 .button_line004 .btn2 {
   position: relative;
-  margin: 0 auto;
+  margin: 5px 0px 5px 20px;
   max-width: 200px;
   padding: 10px 25px;
   color: #313131;
@@ -176,7 +176,7 @@ border-color: #6bb6ff;
 .create {
 	position: relative;
 	width: 27.33%;
-	margin: 40px 3%;
+	margin: 40px 3% 20px 3%;
 }
 .create input[type='email'] {
 	font: 15px/24px sans-serif;
@@ -208,7 +208,7 @@ border-color: #6bb6ff;
 .create input[type='text']:focus::after {
 	outline: none;
 }
-.create input[type='number'] {
+.create input[type='tel'] {
 	font: 15px/24px sans-serif;
 	box-sizing: border-box;
 	width: 100%;
@@ -217,7 +217,7 @@ border-color: #6bb6ff;
 	letter-spacing: 1px;
 	border: 0;
 }
-.create input[type='number']:focus {
+.create input[type='tel']:focus {
 	outline: none;
 }
 .create input[type='number']:focus::after {
