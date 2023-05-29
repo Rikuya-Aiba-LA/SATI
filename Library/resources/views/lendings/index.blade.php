@@ -8,11 +8,15 @@
         <input type="submit" value="検索する">
     </form>
     <form action="{{ route('lendings.index') }}" method="get">
+        <input type="text" name="title"  placeholder="資料名" value="{{ request('title') }}">
+        <input type="submit" value="資料名検索">
+    </form>
+    <form action="{{ route('lendings.index') }}" method="get">
         <input type="hidden" name="cust_id" value = '0'>
         <input type="submit" value="貸出一覧">
     </form>
  @if($lendings->count() == 0)
-<p>該当する会員の貸出情報が存在しません</p>
+<p>該当する貸出情報が存在しません</p>
  @else
     <table>
     <thead>
