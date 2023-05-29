@@ -105,6 +105,7 @@
     <?php
         $today = date('Y-m-d');
         $count = 0;
+        $i = 0;
     ?>
     @foreach($customer->lendings as $data)
     @if($data->return_date == null)
@@ -122,7 +123,7 @@
         ?>
         <td>{{ $expectied_date_match[0] }}</td> 
         <td>
-        <form action="{{ route('lendings.update',[$data,$customer]) }}" method="post" name="return_form">
+        <form action="{{ route('lendings.update',[$data,$customer]) }}" method="post" name="return_form<?php echo $i ?>">
             
             @csrf
             <input type="hidden" name="return_date" value="
@@ -146,7 +147,7 @@
                     + "貸出日:" + lend_date + "\n"
                     + "返却予定日:" + expectied_date )
         ) {
-                return_form.submit();
+                return_form<?php echo $i ?>.submit();
             }
         }
         ;
@@ -155,6 +156,9 @@
     @endif
 
     </tr>
+    <?php
+        $i++;
+    ?>
     @endforeach
 </table>
 @endsection
