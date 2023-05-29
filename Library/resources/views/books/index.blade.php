@@ -23,7 +23,7 @@
   @if($books->count() == 0)
     <p>該当する資料が存在しません</p>
   @else
-    <table border="1">
+    <table>
       <thead>
         <tr>
           <th>資料ID</th>

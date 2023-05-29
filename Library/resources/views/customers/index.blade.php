@@ -22,7 +22,7 @@
 @if($customers->count() == 0)
 <p>該当する会員が存在しません</p>
  @else
-<table border="1">
+<table>
     <tr>
         <th>ID</th>
         <th>名前</th>

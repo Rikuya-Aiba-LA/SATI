@@ -94,7 +94,7 @@
 
 <hr>
 <h2>貸出中資料</h2>
-<table border="1">
+<table>
     <tr>
         <th>資料ID</th>
         <th>資料名</th>
