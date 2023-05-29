@@ -15,12 +15,14 @@ class LendingController extends Controller
         
         if ($request->cust_id) {
             
-            $lendings = Lending::where('cust_id',$request->cust_id)->orderBy('created_at','desc')->paginate(20);
+            $lendings = Lending::where('cust_id',$request->cust_id)->orderBy('id','desc')->paginate(20);
 
         } elseif($request->title){
             $lendings = Lending::whereHas('book', function($query) use ($request){
                 $query->where('title', 'LIKE', "%$request->title%");
-            })->orderBy('created_at', 'desc')->paginate(20);
+            })->orderBy('id', 'desc')->paginate(20);
+        }elseif($request->null_return_date){
+            $lendings = Lending::wherenull('return_date')->orderBy('id','desc')->paginate(20);
         } else {
           $lendings = Lending::orderBy('id','desc')->paginate(20); 
         }

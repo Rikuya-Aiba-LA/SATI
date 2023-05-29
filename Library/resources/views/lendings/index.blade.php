@@ -12,6 +12,10 @@
         <input type="submit" value="資料名検索">
     </form>
     <form action="{{ route('lendings.index') }}" method="get">
+        <input type="hidden" name="null_return_date" value = "1";>
+        <input type="submit" value="未返却資料を表示">
+    </form>
+    <form action="{{ route('lendings.index') }}" method="get">
         <input type="hidden" name="cust_id" value = '0'>
         <input type="submit" value="貸出一覧">
     </form>
