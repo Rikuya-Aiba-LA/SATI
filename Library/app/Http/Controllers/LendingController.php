@@ -17,7 +17,11 @@ class LendingController extends Controller
             
             $lendings = Lending::where('cust_id',$request->cust_id)->orderBy('created_at','desc')->paginate(20);
 
-        }else {
+        } elseif($request->title){
+            $lendings = Lending::whereHas('book', function($query) use ($request){
+                $query->where('title', 'LIKE', "%$request->title%");
+            })->orderBy('created_at', 'desc')->paginate(20);
+        } else {
           $lendings = Lending::orderBy('id','desc')->paginate(20); 
         }
         
