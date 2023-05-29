@@ -3,9 +3,10 @@
 @section('content')
   <h1>資料編集</h1>
   @include('commons.flash')
-  <form action="{{ route('books.update', $book->id) }}" method="post" name = "contact_form">
+  <form action="{{ route('books.update', $book->id) }}" class="button_line004" method="post" name = "contact_form">
     @method('patch')
     @csrf
+    <div class="create">
     <dl>
       <dt>ISBN</dt>
       <dd>
@@ -47,11 +48,13 @@
           <input type="date" name="publish_date" value="{{ old('publish_date', $publish_date_match[0]) }}">
       </dd>
     </dl>
-    <button onclick = "editBook()" name = "check">更新</button>
+    </div>
+    <button onclick = "editBook()" class="btn2" name = "check">更新</button>
+    <form action="{{ route('books.show', $book) }}"  method="get">
+    <button class="btn2">キャンセル</button>
   </form>
-  <form action="{{ route('books.show', $book) }}" method="get">
-    <button>キャンセル</button>
   </form>
+  
   <script>
         //[確認]ボタンが押されたときの処理を定義
        function editBook() {

@@ -3,22 +3,32 @@
 @section('content')
 <body>
     <h1>貸出台帳</h1>
-    <form action="{{ route('lendings.index') }}" class="button001" method="get">
-        <input type="number" name="cust_id"  placeholder="会員ID" value="{{ request('cust_id') }}" required min="1">
-        <input type="submit" class="btn" value="会員ID検索">
-    </form>
-    <form action="{{ route('lendings.index') }}" class="button001" method="get">
-        <input type="text" name="title"  placeholder="資料名" value="{{ request('title') }}">
-        <input type="submit" class="btn" value="資料名検索">
-    </form>
-    <form action="{{ route('lendings.index') }}" method="get">
-        <input type="hidden" name="null_return_date" value = "1";>
-        <input type="submit" value="未返却資料を表示">
-    </form>
-    <form action="{{ route('lendings.index') }}" method="get">
-        <input type="hidden" name="cust_id" value = '0'>
-        <input type="submit" value="貸出一覧">
-    </form>
+    <div class="contents2">
+        <div class="item">
+        <form action="{{ route('lendings.index') }}" class="button_line004" method="get">
+            <input type="hidden" name="null_return_date" value = "1";>
+            <input type="submit" class="btn2" value="未返却資料を表示">
+        </form>
+        </div>
+        <div class="item">
+        <form action="{{ route('lendings.index') }}" class="button_line004" method="get">
+            <input type="hidden" name="cust_id" value = '0'>
+            <input type="submit" class="btn2" value="貸出一覧">
+        </form>
+        </div>
+        <div class="item">
+        <form action="{{ route('lendings.index') }}" class="button001" method="get">
+            <input type="number" name="cust_id"  placeholder="会員ID" class="box" value="{{ request('cust_id') }}" required min="1">
+            <input type="submit" class="btn" value="会員ID検索">
+        </form>
+        </div>
+        <div class="item">
+        <form action="{{ route('lendings.index') }}" class="button001" method="get">
+            <input type="text" name="title"  placeholder="資料名" class="box" value="{{ request('title') }}">
+            <input type="submit" class="btn" value="資料名検索">
+        </form>
+        </div>
+    </div>
  @if($lendings->count() == 0)
 <p>該当する貸出情報が存在しません</p>
  @else

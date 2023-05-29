@@ -1,7 +1,7 @@
 .navgation {
     display: flex;
     margin: 0;
-    margin-left: 18%;
+    margin-left: auto;
     padding: 0;
     list-style: none;
     justify-content:space-between;
