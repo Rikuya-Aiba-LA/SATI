@@ -31,10 +31,10 @@
     </dl>
     </div>
     <button onclick = "createCustomer()" class="btn2" name = "check">更新</button>
-    <form action="{{ route('customers.show', $customer) }}"  method="get">
-    <button class="btn2">キャンセル</button>
-  </form>
 </form>
+    <form action="{{ route('customers.show', $customer) }}" class="button_line004" method="get">
+        <button class="btn2">キャンセル</button>
+    </form>
 <script>
         //[確認]ボタンが押されたときの処理を定義
        function createCustomer() {

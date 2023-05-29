@@ -16,7 +16,7 @@
         </dd>
         <dt>電話番号</dt>
         <dd>
-            <input type="number" name="tel" value="">
+            <input type="tel" name="tel" value="">
         </dd>
         <dt>E-mail</dt>
         <dd>
