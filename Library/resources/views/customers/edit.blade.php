@@ -26,15 +26,19 @@
         </dd>
         <dt>生年月日</dt>
         <dd>
-            <input type="date" name="birth" value="{{ old('birth', $customer->birth) }}">
+        <?php
+            preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$customer->birth, $birth_match);
+        ?>
+            <input type="date" name="birth" value="{{ old('birth', $birth_match[0]) }}">
         </dd>
     </dl>
     </div>
     <button onclick = "createCustomer()" class="btn2" name = "check">更新</button>
+    <button onclick="location.href='{{ route('customers.show', $customer) }}'" class="btn2">キャンセル</button>
 </form>
-    <form action="{{ route('customers.show', $customer) }}" class="button_line004" method="get">
+    <!--<form action="{{ route('customers.show', $customer) }}" class="button_line004" method="get">
         <button class="btn2">キャンセル</button>
-    </form>
+    </form>-->
 <script>
         //[確認]ボタンが押されたときの処理を定義
        function createCustomer() {

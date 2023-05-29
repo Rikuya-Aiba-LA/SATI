@@ -50,10 +50,11 @@
     </dl>
     </div>
     <button onclick = "editBook()" class="btn2" name = "check">更新</button>
+    <button onclick="location.href='{{ route('books.show', $book) }}'" class="btn2">キャンセル</button>
   </form>
-  <form action="{{ route('books.show', $book) }}" class="button_line004"  method="get">
+  <!--<form action="{{ route('books.show', $book) }}" class="button_line004"  method="get">
     <button class="btn2">キャンセル</button>
-  </form>
+  </form>-->
   
   <script>
         //[確認]ボタンが押されたときの処理を定義
