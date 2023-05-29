@@ -161,7 +161,10 @@ return [
         'birth'=>'誕生日',
         'record_date'=>'登録日',
         'isbn'=>'ISBN番号',
-        'title'=>'資料名'
+        'title'=>'資料名',
+        'author'=>'著者名',
+        'publisher'=>'出版社',
+        'publish_date'=>'出版日'
     ],
 
 ];
