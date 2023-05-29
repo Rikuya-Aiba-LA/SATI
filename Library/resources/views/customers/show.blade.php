@@ -107,7 +107,7 @@
         $count = 0;
         $i = 0;
     ?>
-    @foreach($customer->lendings as $data)
+    @foreach($customer->lendings->sortBy('expectied_date') as $data)
     @if($data->return_date == null)
     <tr>
         <td>{{ $data->book->id }}</td>
