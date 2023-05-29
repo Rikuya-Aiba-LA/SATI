@@ -2,23 +2,36 @@
 
 @section('content')
   @if($books->whereNotNull('trash_date')->count() > 0)
-    <h1>廃棄済み資料</h1>
+    <h1>廃棄資料一覧</h1>
   @else
     <h1>在庫資料一覧</h1>
   @endif
-  <button onclick="location.href='{{ route('books.create') }}'">新規登録</button>
-  <form action="{{ route('books.index') }}" class="button001" method="get">
-    <input type="number" name="id" value="{{ request('id') }}" placeholder="資料ID" required>
-    <input type="submit" class="btn" value="検索する">
-  </form>
-  <form action="{{ route('books.index') }}" method="get">
-    <input type="hidden" name="id" value = ''>
-    <input type="submit" onclick="changeExists()" value="在庫資料一覧">
-  </form>
-  <form action="{{ route('books.index') }}" method="get">
-    <input type="hidden" name="trash_date" value="日本語">
-    <input type="submit" onclick="changeTrash()" value="廃棄済み資料">
-  </form>
+  <button onclick="location.href='{{ route('books.create') }}'">新規資料登録</button>
+  
+  
+  <div class="contents">
+    <div class="item">
+      <form action="{{ route('books.index') }}" method="get">
+        <input type="hidden" name="id" value = ''>
+        <input type="submit" onclick="changeExists()" value="在庫資料一覧">
+      </form>
+    </div>
+    <div class="item">
+      <form action="{{ route('books.index') }}" method="get">
+        <input type="hidden" name="trash_date" value="日本語">
+        <input type="submit" onclick="changeTrash()" value="廃棄資料一覧">
+      </form>
+    </div>
+    <div class="item">
+      <form action="{{ route('books.index') }}" class="button001" method="get">
+        <input type="number" name="id" value="{{ request('id') }}" placeholder="資料ID" required>
+        <input type="submit" class="btn" value="検索する">
+      </form>
+    </div>
+  </div>
+
+  
+
   <hr>
   @if($books->count() == 0)
     <p>該当する資料が存在しません</p>

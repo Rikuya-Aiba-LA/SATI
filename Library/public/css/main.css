@@ -117,11 +117,22 @@ button {
 }
 
 /* 各種ボタン */
+.contents {
+  display: flex;
+  flex-wrap: wrap;
+  width: 600px;
+}
+.item {
+  width: calc(100% / 4);
+  padding: 20px 10px;
+  text-align: center;
+}
+
 .button_line004 .btn2 {
   position: relative;
-  display: flex;
+  /* display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items: center; */
   margin: 0 auto;
   max-width: 200px;
   padding: 10px 25px;

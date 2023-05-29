@@ -2,7 +2,7 @@
 @section('content')
 <h1>会員登録画面</h1>
 @include('commons.flash')
-<form action="{{ route('customers.store') }}" method="post" name="contact_form" >
+<form action="{{ route('customers.store') }}" method="post" class="button_line004" name="contact_form" >
 @csrf
 <dl>
     <dt>氏名</dt>
@@ -35,7 +35,7 @@
     </dd>
     <input type="hidden" name="record_date" value="{{ date('Y-m-d') }}">
 </dl>
-<button onclick = "createCustomer()" name = "check">登録確認</button>
+<button onclick = "createCustomer()" class="btn2" name = "check">登録</button>
 </form>
 <script>
         //[確認]ボタンが押されたときの処理を定義
