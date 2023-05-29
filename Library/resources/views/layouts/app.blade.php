@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="/css/flash.css">
     <link rel="stylesheet" href="/css/nav.css">
     <link rel="stylesheet" href="/css/main.css">
-
 </head>
 <body>
     <header>

@@ -6,6 +6,7 @@
 @include('commons.flash')
 <form action="{{ route('books.store') }}" method="post" class="button_line004" name = "contact_form" >
     @csrf
+    <div class="create">
     <dl class="a">
         <dt>ISBN</dt>
         <dd>
@@ -51,6 +52,7 @@
             @endif
         </dd>
     </dl>
+</div>
     <button onclick = "createBook()" class="btn2" name = "check">登録</button>
 </form>
 

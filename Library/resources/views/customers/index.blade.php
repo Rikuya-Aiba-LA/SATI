@@ -7,20 +7,32 @@
     <h1>登録会員一覧</h1>
 @endif
     
-<form action="{{ route('customers.index') }}" class="button001" method="get">
-    <input type="email" name="email" value="{{ request('email') }}" placeholder="Email" required>
-    <input type="submit" class="btn" value="検索する">
-</form>
-<button onclick="location.href='{{ route('customers.create') }}'">新規会員登録</button>
+<div class="replace">
+    <div class="button_line004">
+      <button onclick="location.href='{{ route('customers.create') }}'" class="btn2">新規会員登録</button>
+    </div>
+</div>
 
-<form action="{{ route('customers.index') }}" method="get">
-    <input type="hidden" name="email" value = ''>
-    <input type="submit" value="登録会員一覧">
-</form>
-<form action="{{ route('customers.index') }}" method="get">
-    <input type="hidden" name="unsub_date" value="1">
-    <input type="submit" value="退会会員一覧">
-</form>
+<div class="contents">
+    <div class="item">
+        <form action="{{ route('customers.index') }}" class="button_line004" method="get">
+            <input type="hidden" name="email" value = ''>
+            <input type="submit" class="btn2" value="登録会員一覧">
+        </form>
+    </div>
+    <div class="item">
+        <form action="{{ route('customers.index') }}" class="button_line004" method="get">
+            <input type="hidden" name="unsub_date" value="1">
+            <input type="submit" class="btn2" value="退会会員一覧">
+        </form>
+    </div>
+    <div class="item">
+        <form action="{{ route('customers.index') }}" class="button001" method="get">
+            <input type="email" name="email" value="{{ request('email') }}" class="box" placeholder="Email" required>
+            <input type="submit" class="btn" value="検索する">
+        </form>
+    </div>
+</div>
 @if($customers->count() == 0)
 <p>該当する会員が存在しません</p>
  @else

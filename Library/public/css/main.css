@@ -1,6 +1,7 @@
 /* ここからテーブルレイアウト */
 table{
-    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
     border-collapse:separate;
     border-spacing: 0;
     table-layout: fixed;
@@ -13,14 +14,12 @@ table{
   }
   
   table th:nth-child(2){ 
-     border-radius: 5px 0 0 0; 
-     /* width: 25px;  */
+    border-radius: 5px 0 0 0; 
   }
 
   table th:nth-child(3){ 
     border-radius: 5px 0 0 0; 
-    /* width: 25px;  */
- }
+  }
 
   table th:last-child{
     border-radius: 0 5px 0 0;
@@ -35,7 +34,6 @@ table{
     border-top: 1px solid #3c6690;
     border-bottom: 1px solid #3c6690;
     box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;
-    /* width: 10px; */
     padding: 10px 0;
   }
   
@@ -46,7 +44,6 @@ table{
     border-bottom: 1px solid #a8b7c5;
     border-top:none;
     box-shadow: 0px -3px 5px 1px #eee inset;
-    /* width: 25%; */
     padding: 10px 0;
   }
   
@@ -58,10 +55,7 @@ table{
     border-radius: 0 0 0 5px;
   }
 
-/* sectionレイアウト */
-/* section {
-    background-color:#f5f5f5;
-} */
+
 
 /* 共通レイアウト */
 h1 {
@@ -69,25 +63,14 @@ h1 {
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
     margin-top: 0;
     padding-top: 50px;
-    padding-left: 50px;
+    text-align: center;
 }
-
-/* input {
-    color: green;
-    background-color: #eaf4ff;
-}
-
-button {
-    color: green;
-    background-color: #eaf4ff;
-} */
 
 /* 「検索する」ボタン */
 .button001 .btn {
   background: #eee;
   border-radius: 3px;
   position: relative;
-  
   margin: 0 auto;
   max-width: 280px;
   padding: 2px 10px;
@@ -115,24 +98,38 @@ button {
 .button001 .btn:hover:after {
   border-color: #FFF;
 }
+.box {
+  margin-top: 12px;
+  height: 25px;
+}
 
 /* 各種ボタン */
 .contents {
   display: flex;
   flex-wrap: wrap;
-  width: 600px;
+  width:600px;
+  margin: auto;
 }
+.contents2 {
+  display: flex;
+  width:1200px;
+  margin-left: 200px;
+  margin-right: auto;
+}
+
 .item {
-  width: calc(100% / 4);
   padding: 20px 10px;
   text-align: center;
 }
 
+/* index画面新規登録ボタン */
+.replace {
+  margin-left: 145px;
+}
+
+/* create画面登録ボタン */
 .button_line004 .btn2 {
   position: relative;
-  /* display: flex;
-  justify-content: space-around;
-  align-items: center; */
   margin: 0 auto;
   max-width: 200px;
   padding: 10px 25px;
@@ -175,20 +172,98 @@ background-color: #6bb6ff;
 border-color: #6bb6ff;
 }
 
+/* create画面レイアウト */
+.create {
+	position: relative;
+	width: 27.33%;
+	margin: 40px 3%;
+}
+.create input[type='email'] {
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.3em;
+	padding-left: 40px;
+	letter-spacing: 1px;
+	border: 0;
+}
+.create input[type='email']:focus {
+	outline: none;
+}
+.create input[type='email']:focus::after {
+	outline: none;
+}
+.create input[type='text'] {
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.3em;
+	padding-left: 40px;
+	letter-spacing: 1px;
+	border: 0;
+}
+.create input[type='text']:focus {
+	outline: none;
+}
+.create input[type='text']:focus::after {
+	outline: none;
+}
+.create input[type='number'] {
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.3em;
+	padding-left: 40px;
+	letter-spacing: 1px;
+	border: 0;
+}
+.create input[type='number']:focus {
+	outline: none;
+}
+.create input[type='number']:focus::after {
+	outline: none;
+}
+.create input[type='date'] {
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.3em;
+	padding-left: 40px;
+	letter-spacing: 1px;
+	border: 0;
+}
+.create input[type='date']:focus {
+	outline: none;
+}
+.create input[type='date']:focus::after {
+	outline: none;
+}
+.create i {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 9px 5px;
+	transition: 0.3s;
+	color: #aaaaaa;
+}
+.create::after {
+	display: block;
+	width: 100%;
+	height: 4px;
+	margin-top: -1px;
+	content: '';
+	border-width: 0 1px 1px 1px;
+	border-style: solid;
+	border-color: #da3c41;
+}
 
-/* .a dt {
-    color: green;
-} */
 
 svg.w-5.h-5{
   width: 25px;
   vertical-align: middle;
 }
 
-/* .content {
-  background-color: #ffffe0;
-  background-size: contain;
-} */
+
 
 body {
   background-color: #f5deb3;

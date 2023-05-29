@@ -3,9 +3,10 @@
 @section('content')
 <h1>会員情報編集</h1>
 @include('commons.flash')
-<form action="{{ route('customers.update',$customer->id) }}" method="post" name="contact_form" >
+<form action="{{ route('customers.update',$customer->id) }}" class="button_line004" method="post" name="contact_form" >
     @method('patch')
     @csrf
+    <div class="create">
     <dl>
         <dt>氏名</dt>
         <dd>
@@ -28,7 +29,11 @@
             <input type="date" name="birth" value="{{ old('birth', $customer->birth) }}">
         </dd>
     </dl>
-    <button onclick = "createCustomer()" name = "check">更新</button>
+    </div>
+    <button onclick = "createCustomer()" class="btn2" name = "check">更新</button>
+    <form action="{{ route('customers.show', $customer) }}"  method="get">
+    <button class="btn2">キャンセル</button>
+  </form>
 </form>
 <script>
         //[確認]ボタンが押されたときの処理を定義
