@@ -50,7 +50,7 @@
     </script>
     @endif
     </div>
-</div>
+
     <div class="item">
         @if($count > 0)
             <p class="msg">返却日を過ぎたの資料が{{ $count }}冊あります</p>
@@ -65,7 +65,7 @@
         @endif
     </div>
 @endif
-
+</div>
 <hr>
 <div class="documents">
     <dl>
