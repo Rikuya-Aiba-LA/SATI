@@ -61,28 +61,30 @@
   </div>
 </div>
 <hr>
-  <dl>
-    <dt>ISBN: </dt>
-    <dd>{{ $book->isbn }}</dd>
-    <dt>資料名: </dt>
-    <dd>{{ $book->title }}</dd>
-    <dt>分類コード: </dt>
-    <dd>{{ $book->classify_id }}</dd>
-    <dt>著者: </dt>
-    <dd>{{ $book->author }}</dd>
-    <dt>出版社: </dt>
-    <dd>{{ $book->publisher }}</dd>
-    <dt>出版日: </dt>
-    <?php
-      preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$book->publish_date, $date_match);
-    ?>
-    <dd>{{ $date_match[0] }}</dd>
-    @if($book->trash_date)
-      <dt>廃棄年月日</dt>
+<div class="documents">
+    <dl>
+      <dt>ISBN: </dt>
+      <dd>{{ $book->isbn }}</dd>
+      <dt>資料名: </dt>
+      <dd>{{ $book->title }}</dd>
+      <dt>分類コード: </dt>
+      <dd>{{ $book->classify_id }}</dd>
+      <dt>著者: </dt>
+      <dd>{{ $book->author }}</dd>
+      <dt>出版社: </dt>
+      <dd>{{ $book->publisher }}</dd>
+      <dt>出版日: </dt>
       <?php
-            preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$book->trash_date, $trash_date_match);
-        ?>
-      <dd>{{ $trash_date_match[0] }}</dd>
-    @endif
-  </dl>
+        preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$book->publish_date, $date_match);
+      ?>
+      <dd>{{ $date_match[0] }}</dd>
+      @if($book->trash_date)
+        <dt>廃棄年月日</dt>
+        <?php
+              preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$book->trash_date, $trash_date_match);
+          ?>
+        <dd>{{ $trash_date_match[0] }}</dd>
+      @endif
+    </dl>
+  </div>
 @endsection
