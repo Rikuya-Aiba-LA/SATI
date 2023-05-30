@@ -2,25 +2,29 @@
 
 @section('content')
 <h1>会員詳細画面</h1>
-<form action="{{ route('customers.index') }}" method="get">
-    <button>一覧へ</button>
-  </form>
-<!-- 会員の情報を変更するために会員情報変更画面へ飛ぶ -->
-<form action="{{route('customers.edit', $customer->id) }}">
-    <button type="submit">編集</button>
-</form>
-@if($customer->unsub_date)
-    <p>この会員は退会済みです</p>
-@else
-    @if($lend_num > 0)
-        <p>退会不可: </p>
-        <p>未返却図書があるため退会できません</p>
-    @else
-        <form action="{{ route('customers.unsub',$customer->id) }}" method= "post" name="contact_form">         
-            @csrf
-            <input type="hidden" name="unsub_date" value="<?php echo date('Y-m-j');?>">
-            <button onclick="unsubCustomer()">退会</button>
+<div class="button_line004">
+    <div class="contents3">
+        <form action="{{ route('customers.index') }}" method="get">
+            <button class="btn2">一覧へ</button>
         </form>
+        <!-- 会員の情報を変更するために会員情報変更画面へ飛ぶ -->
+        <form action="{{route('customers.edit', $customer->id) }}">
+            <button type="submit" class="btn2" >編集</button>
+        </form>
+
+        @if($customer->unsub_date)
+            <p class="msg">この会員は退会済みです</p>
+        @else
+            @if($lend_num > 0)
+              
+                <p class="msg">未返却図書があるため退会できません</p>
+            @else
+                <form action="{{ route('customers.unsub',$customer->id) }}" method= "post" name="contact_form">         
+                    @csrf
+                    <input type="hidden" name="unsub_date" value="<?php echo date('Y-m-j');?>">
+                    <button onclick="unsubCustomer()" class="btn2" >退会</button>
+                </form>
+
         <script>
         //[確認]ボタンが押されたときの処理を定義
        function unsubCustomer() {
@@ -45,20 +49,21 @@
         ;
     </script>
     @endif
-    <hr>
-    @if($count > 0)
-        <p>貸出不可: </p>
-        <p>返却日を過ぎたの資料が{{ $count }}冊あります</p>
-    @elseif($lend_num >=  5)
-        <p>貸出不可: </p>
-        <p>同時に借りられる資料は5冊までです</p>
-    @else
-    <p>※貸出資料のIDを入力してください</p>
-        <form action="{{ route('lendings.check', $customer) }}" class="button001" method="get">
-            <input type="number" name="book_id" value="{{ request('id') }}" placeholder="資料ID" required>
-            <input type="submit" class="btn" value="検索する">
-        </form>
-    @endif
+    </div>
+</div>
+    <div class="item">
+        @if($count > 0)
+            <p class="msg">返却日を過ぎたの資料が{{ $count }}冊あります</p>
+        @elseif($lend_num >=  5)
+            <p class="msg">同時に借りられる資料は5冊までです</p>
+        @else
+        <p class="msg2">※貸出資料のIDを入力してください</p>
+            <form action="{{ route('lendings.check', $customer) }}" class="button001" method="get">
+                <input type="number" class="box" name="book_id" value="{{ request('id') }}" placeholder="資料ID" required>
+                <input type="submit" class="btn" value="検索する">
+            </form>
+        @endif
+    </div>
 @endif
 
 <hr>

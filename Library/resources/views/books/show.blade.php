@@ -2,30 +2,33 @@
 
 @section('content')
   <h1>資料詳細画面</h1>
-  <form action="{{ route('books.index') }}" method="get">
-    <button>一覧へ</button>
-  </form>
-  <form action="{{ route('books.edit', $book) }}" method="get">
-    <button>編集</button>
-  </form>
+  <div class="button_line004">
+    <div class="contents3">
+      <form action="{{ route('books.index') }}" method="get">
+        <button class="btn2">一覧へ</button>
+      </form>
+      <form action="{{ route('books.edit', $book) }}" method="get">
+        <button class="btn2">編集</button>
+      </form>
 
-  @if($book->trash_date)
-    <p>資料は廃棄済みです</p>
+      @if($book->trash_date)
+        <p class="msg">資料は廃棄済みです</p>
 
-  @else
-  @if($book->lendings->whereNull('return_date')->count() > 0)
-  <p>この資料は貸出中のため廃棄できません</p>
+      @else
+      @if($book->lendings->whereNull('return_date')->count() > 0)
+      <p class="msg">この資料は貸出中のため廃棄できません</p>
 
-    @else
-    <form action="{{ route('books.trash', $book->id) }}" method="post" name="contact_form">
-      @method('patch')
-      @csrf
-      <input type="hidden" name="trash_date" value="
-      <?php
-        echo date('Y-m-d');
-      ?>">
-      <button onclick="trashBook()" name="check">廃棄</button>
+        @else
+        <form action="{{ route('books.trash', $book->id) }}" method="post" name="contact_form">
+          @method('patch')
+          @csrf
+          <input type="hidden" name="trash_date" value="
+          <?php
+            echo date('Y-m-d');
+          ?>">
+          <button onclick="trashBook()" name="check" class="btn2">廃棄</button>
     </form>
+
     <script>
         //[確認]ボタンが押されたときの処理を定義
        function trashBook() {
@@ -55,6 +58,9 @@
   </script>
     @endif
   @endif
+  </div>
+</div>
+<hr>
   <dl>
     <dt>ISBN: </dt>
     <dd>{{ $book->isbn }}</dd>
