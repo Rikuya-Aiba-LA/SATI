@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ config('app.name') }}</title>
-    <link rel="stylesheet" href="#">
+    <link rel="stylesheet" href="/CSS/main.css">
+    <link rel="stylesheet" href="/CSS/login.css">
+    <link rel="stylesheet" href="/CSS/nav.css">
 </head>
 <body>
     <header>
@@ -12,7 +14,7 @@
         </div>
     </header>
     <main>
-        <div class="container">
+        <div class="create">
             <h1>ログイン</h1>
             <form action="{{ route('login') }}" method="post">
                 @csrf
