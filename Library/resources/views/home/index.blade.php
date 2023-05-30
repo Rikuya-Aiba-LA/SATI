@@ -15,10 +15,12 @@
 <p class="element"><a href="{{ route('books.index') }}">資料管理画面</a></p>
 <p class="element"><a href="{{ route('lendings.index') }}">貸出台帳画面</a></p>
 </div>
-<form action="{{ route('logout') }}" method="POST">
-    @csrf
-    <input type="submit" value="ログアウト">
-</form>
+<div class="button_line004">
+    <form action="{{ route('logout') }}" method="POST">
+        @csrf
+        <input type="submit" value="ログアウト" class="btn2">
+    </form>
+</div>
 </section>
 </body>
 </html>

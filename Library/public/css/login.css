@@ -1,0 +1,26 @@
+.create input[type='password'] {
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.3em;
+	padding-left: 40px;
+	letter-spacing: 1px;
+	border: 0;
+}
+.create input[type='password']:focus {
+	outline: none;
+}
+.create input[type='password']:focus::after {
+	outline: none;
+}
+.create{
+  margin: auto;
+}
+button{
+  width: 120px;
+  height: 40px;
+  margin-left: 130px;
+}
+button:hover{
+  background-color:#C49062;
+}
