@@ -360,4 +360,32 @@ body {
   border-left: 1px solid black;
 }
 
-
+.documents{
+  margin-left:350px;
+  
+}
+.documents dl {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 900px;
+}
+.documents dt {
+  width: 200px;
+  padding: 20px;
+  margin: 0 0 10px 0;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:#e2ac7c;
+  color:rgb(94, 18, 18);
+}
+.documents dd {
+  width: 400px;
+  padding: 20px;
+  background-color: #FFFACD;
+  margin: 0 0 10px 0;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}

@@ -67,38 +67,39 @@
 @endif
 
 <hr>
-<dl>
-    <dt>会員ID: </dt>
-    <dd>{{ $customer->id }}</dd>
-    <dt>氏名: </dt>
-    <dd>{{ $customer->name}}</dd>
-    <dt>住所: </dt>
-    <dd>{{ $customer->address}}</dd>
-    <dt>電話番号: </dt>
-    <dd>{{ $customer->tel}}</dd>
-    <dt>E-mail: </dt>
-    <dd>{{ $customer->email}}</dd>
-    <dt>生年月日: </dt>
-    <?php
-        preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$customer->birth, $birth_date_match);
-    ?>
-    <dd>{{ $birth_date_match[0] }}</dd>
-    <dt>入会年月日: </dt>
-    <?php
-        preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$customer->record_date, $record_date_match);
-    ?>
-    <dd>{{ $record_date_match[0] }}</dd>
-    <dt>退会年月日: </dt>
-    @if($customer->unsub_date)
+<div class="documents">
+    <dl>
+        <dt>会員ID: </dt>
+        <dd>{{ $customer->id }}</dd>
+        <dt>氏名: </dt>
+        <dd>{{ $customer->name}}</dd>
+        <dt>住所: </dt>
+        <dd>{{ $customer->address}}</dd>
+        <dt>電話番号: </dt>
+        <dd>{{ $customer->tel}}</dd>
+        <dt>E-mail: </dt>
+        <dd>{{ $customer->email}}</dd>
+        <dt>生年月日: </dt>
         <?php
-            preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$customer->unsub_date, $unsub_date_match);
+            preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$customer->birth, $birth_date_match);
         ?>
-        <dd>{{ $unsub_date_match[0] }}</dd>
-    @else
-        <dd>{{ $customer->unsub_date }}</dd>
-    @endif
-</dl>
-
+        <dd>{{ $birth_date_match[0] }}</dd>
+        <dt>入会年月日: </dt>
+        <?php
+            preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$customer->record_date, $record_date_match);
+        ?>
+        <dd>{{ $record_date_match[0] }}</dd>
+        <dt>退会年月日: </dt>
+        @if($customer->unsub_date)
+            <?php
+                preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}/',$customer->unsub_date, $unsub_date_match);
+            ?>
+            <dd>{{ $unsub_date_match[0] }}</dd>
+        @else
+            <dd>{{ $customer->unsub_date }}</dd>
+        @endif
+    </dl>
+</div>
 <hr>
 <h2>貸出中資料</h2>
 <table>

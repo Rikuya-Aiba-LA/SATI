@@ -3,42 +3,44 @@
 @section('content')
 <h1>貸出確認画面</h1>
 @if($book)
+<div class="documents">
   <h2>会員情報</h2>
   <form action="{{ route('lendings.store', $customer->id) }}" method="post" name="contact_form">
     @csrf
-  <dl>
-    <dt>会員ID</dt>
-    <dd>
-      <p>{{ $customer->id }}</p>
-      <input type="hidden" name="cust_id" value="{{ $customer->id }}">
-    </dd>
-    <dt>会員名</dt>
-    <dd>
-      <p>{{ $customer->name }}</p>
-    </dd>
-  </dl>
-  <hr>
-  <h2>資料情報</h2>
-  <dl>
-    <dt>資料ID</dt>
-    <dd>
-      <p>{{ $book->id }}</p>
-      <input type="hidden" name="book_id" value="{{ $book->id }}">
-    </dd>
-    <dt>資料名</dt>
-    <dd>
-      <p>{{ $book->title }}</p>
-    </dd>
-    <dt>著者</dt>
-    <dd>
-      <p>{{ $book->author }}</p>
-    </dd>
-    <dt>出版社</dt>
-    <dd>
-      <p>{{ $book->publisher }}</p>
-    </dd>
-  </dl>
-  <hr>
+      <dl>
+        <dt>会員ID</dt>
+        <dd>
+          <p>{{ $customer->id }}</p>
+          <input type="hidden" name="cust_id" value="{{ $customer->id }}">
+        </dd>
+        <dt>会員名</dt>
+        <dd>
+          <p>{{ $customer->name }}</p>
+        </dd>
+      </dl>
+   
+      <h2>資料情報</h2>
+      <dl>
+        <dt>資料ID</dt>
+        <dd>
+          <p>{{ $book->id }}</p>
+          <input type="hidden" name="book_id" value="{{ $book->id }}">
+        </dd>
+        <dt>資料名</dt>
+        <dd>
+          <p>{{ $book->title }}</p>
+        </dd>
+        <dt>著者</dt>
+        <dd>
+          <p>{{ $book->author }}</p>
+        </dd>
+        <dt>出版社</dt>
+        <dd>
+          <p>{{ $book->publisher }}</p>
+        </dd>
+      </dl>
+  </div>
+ 
   <?php
     $today = date('Y-m-d');
     if(strtotime($book->publish_date) > strtotime("-3 month")){
@@ -49,21 +51,29 @@
     }
 
   ?>
-  @if($book->lendings->whereNull('return_date')->count())
-  <p>この本は現在貸出中です</p>
-  <a href="{{route('customers.show',$customer)}}">会員詳細画面に戻る</a>
-  @elseif(isset($book->trash_date))
-  <p>この本は廃棄済みです。</p>
-  <a href="{{route('customers.show',$customer)}}">会員詳細画面に戻る</a>
-  @else
-  <h2>貸出日</h2>
-    <p>{{ $today }}</p>
-    <input type="hidden" name="lend_date" value="{{ $today }}">
-  <h2>返却予定日</h2>
-    <p>{{ $expectied_date }}</p>
-    <input type="hidden" name="expectied_date" value="{{ $expectied_date }}">
-    <button onclick="lendBook()">貸出する</button>
-  </form>
+   <div class="documents">
+      @if($book->lendings->whereNull('return_date')->count())
+      <p class="msg">この本は現在貸出中です</p>
+      <a href="{{route('customers.show',$customer)}}">会員詳細画面に戻る</a>
+      @elseif(isset($book->trash_date))
+      <p class="msg">この本は廃棄済みです。</p>
+      <a href="{{route('customers.show',$customer)}}">会員詳細画面に戻る</a>
+      @else
+ 
+    <dl>
+    <dt>貸出日</dt>
+      <dd>{{ $today }}</dd>
+      <input type="hidden" name="lend_date" value="{{ $today }}">
+    <dt>返却予定日</dt>
+      <dd>{{ $expectied_date }}</dd>
+    </dl>
+  
+    <div class="button_line004">
+      <input type="hidden" name="expectied_date" value="{{ $expectied_date }}">
+      <button onclick="lendBook()" class="btn2">貸出する</button>
+    </form>
+    </div>
+  </div>
   <script>
         //[確認]ボタンが押されたときの処理を定義
        function lendBook() {
@@ -91,7 +101,7 @@
     </script>
   @endif
 @else
-  <p>該当する資料が存在しません</p>
+  <p class="msg">該当する資料が存在しません</p>
   <a href="{{route('customers.show',$customer)}}">会員詳細画面に戻る</a>
 @endif
 @endsection
