@@ -101,7 +101,7 @@
     </dl>
 </div>
 <hr>
-<h2>貸出中資料</h2>
+<h2 class="lending">貸出中資料</h2>
 <table>
     <tr>
         <th>資料ID</th>
